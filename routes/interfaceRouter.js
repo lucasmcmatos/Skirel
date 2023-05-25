@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const interfaceController = require('../controllers/interfaceController');
 
-router.get('/Skirel', interfaceController.welcome);
+router.get('/Welcome', interfaceController.verifyToken  ,  (req , res)=>{
+    res.render('welcome')
+});
+
+router.get('/Home', interfaceController.verifyToken , (req , res)=>{
+    res.render('homepage');
+});
 
 module.exports = router;
