@@ -27,8 +27,8 @@ db.once('open' , ()=>{console.log('Database Loaded!')});
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine' , 'ejs');
 
+app.use(express.static(__dirname + '/public'));
 app.use('/', express.json() , interfaceRouter);
-
 app.use('/auth', express.json() , userRouter);
 
 app.listen(process.env.PORT , ()=>{console.log('Server Running...')})

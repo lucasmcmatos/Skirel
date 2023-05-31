@@ -1,0 +1,259 @@
+body{
+    margin: 0;
+    padding: 0; 
+}
+
+a{
+    text-decoration: none;
+    color: #424f63
+}
+
+p{
+    font-family:'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+}
+
+h3{
+    font-family:'Inter';
+    font-style: normal;
+    font-size: 48px;
+    width: 592px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+/* ------------ Header ------------ */
+
+#header{
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: 76px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: red;*/
+
+
+}
+
+#iconPlace{
+    height: 100%;
+    width: 60%;
+}
+
+#buttonsPlace{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonBox{
+    border-radius: 8px ;
+    font-family:'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    transition-duration: 0.2s;
+}
+
+.buttonBox:hover{
+    color: black;
+    font-size: 18px;
+}
+
+#loginButton{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    color: #1A75FF;
+    transition-duration: 0.2s;
+}
+
+#loginButton:hover{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 2px;
+    background-color: #1A75FF;
+    color: white;
+}
+
+#cadastroButton{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    background-color: #1A75FF;
+    color: white;
+    transition-duration: 0.2s;
+}
+
+#cadastroButton:hover{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 2px;
+}
+
+/* ------------ Header ------------ */
+/* ------------ Home Page ------------ */
+
+#home{
+    /*background-color: green;*/
+    padding-top: 80px;
+    height: 828px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#interfaceTitle{
+    /*background-color: red;*/
+    height: 800px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+
+}
+
+#interfaceImage{
+    background-color: rgba(0, 0, 0, 0.39);
+    height: 800px;
+    width: 600px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 2px;
+}
+
+#interfaceButton{
+    margin-top: 40px;
+    margin-left:10px;
+}
+
+/* ------------ Home Page ------------ */
+
+/* ------------ The Project ------------ */
+
+#project{
+    background-color: #F9F9F9;
+    height: 828px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    height: 860px;
+    width: 100%;
+}
+
+#projectContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 32px;
+    width: 1216px;
+    height: 700px;
+    border-radius: 0px;
+}
+
+.projectColumn{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    width: 592px;
+    height: 532px;
+    border-radius: 0px;
+}
+
+.feature{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 24px 52px;
+    gap: 28px;
+    width: 592px;
+    height: 532px;
+    border-radius: 10px; 
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 36px;  
+    width: 544px;
+    height: 480px; 
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#projectTitle{
+    width: 544px;
+    height: 28px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 28px;
+    color: #1975FF;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#projectparagraph{
+    width: 544px;
+    height: 416px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: #344051;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0;
+}
+
+#projectImage{
+    background-color: rgba(0, 0, 0, 0.39);
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+/* ------------ The Project ------------ */
