@@ -6,7 +6,7 @@ router.get('/Welcome', interfaceController.verifyToken  ,  (req , res)=>{
     res.render('welcome')
 });
 
-router.get('/Home' , (req , res)=>{
+router.get('/' , (req , res)=>{
     res.render('homepage');
 });
 
