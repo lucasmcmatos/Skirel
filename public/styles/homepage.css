@@ -1,3 +1,7 @@
+@viewport {
+    width: device-width;
+    zoom:1;
+ }
 
 body{
     margin: 0;
@@ -215,6 +219,7 @@ html{
                     font-weight: 600;
                     font-size: 40px;
                     color: #1975FF;
+                    text-align: start;
                 }
                 
             #projectParagraphContent{
@@ -230,6 +235,7 @@ html{
                     font-size: 18px;
                     color: #344051;
                     line-height: 32px;
+                    text-align: start;
                 }
 
         #projectImageContainer{
@@ -254,13 +260,74 @@ html{
     align-items: center;
     padding: 80px 0px;
     width: 100%;
-    height: 750px;
+    height: 550px;
     border-radius: 0px;
     flex: none;
     order: 0;
     align-self: stretch;
     flex-grow: 0;
 }
+
+    #labContainer{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        #labImageContainer{
+            width: 600px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            #labImage{
+                width: 100%;
+            }
+
+        #labTextContainer{
+            width: 600px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+            #labTitleContent{
+                width: 544px;
+                height: 28px;
+                margin-bottom:36px ;
+                margin-top:10px ;
+            }
+
+                #labTitle{
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 40px;
+                    line-height: 28px;
+                    text-align: start;
+                    color: #1975FF;
+                }
+
+            #labParagraphContent{
+                width: 544px;
+                height: 288px;
+            }
+                
+                #labParagraph{
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 32px;
+                    text-align: start;
+
+                }
 
 
 /* ------------ The Laboratory ------------*/
@@ -276,24 +343,283 @@ html{
     background-color: #F9F9F9;
 }
 
+    #interfaceContainer{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+        #interfaceTextContainer{
+            width: 1215px;
+            height: 232px;
+            margin-bottom: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            #interfaceTitleContent{
+                width: 217px;
+                height: 40px;
+            }
+
+                #interfaceTitle{
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 40px;
+                    line-height: 28px;
+                    color: #1975FF;
+                }
+
+            #interfaceParagraphContent{
+                width: 804px;
+                height: 168px;
+            }
+
+                #interfaceParagraph{
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 28px;
+                    text-align: center;
+                    color: #344051;
+                }
+
+        #interfaceCardsContainer{
+            width: 1215px;
+            height: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+            .interfaceCards{
+                width: 400px;
+                height: 350px;
+                border-radius: 8px;
+                background-color: #ffffff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+
+                .interfaceCardsImagesContent{
+                    border-radius:8px;
+                    width: 100%;
+                    height: 213px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                }
+
+                    .interfaceCardImage{
+                        width: 95%;
+                        height: 91%;
+                        border-radius:8px;
+                    }
+
+
+                .interfaceCardsTextContent{ 
+                    border-radius:0 0 8px 8px;
+                    width: 100%;
+                    height: 148px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
+
+                    .interfaceCardsTitleContent{
+                        height: 32px;
+                        width: 352px;
+                        margin-bottom: 10px;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                        .interfaceCardsTitle{
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 24px;
+                            line-height: 32px;
+                            color: #141C24;
+                        }
+
+                    .interfaceCardsParagraphContent{
+                        height: 48px;
+                        width: 352px;
+                    }
+
+                        .interfaceCardsParagraph{
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #344051;
+
+                        }
+
+
+
 
 /* ------------ The Interface ------------*/
 
 /*  ------------ Responsive ------------ */
 
-@media screen and (max-width: 1480px){
+@media screen and (max-width: 1400px){
+
+    body{
+        width: 100%;
+    }
+
+    #header{
+        display: none;
+    }
+
+    #home{
+        padding-top: 0;
+    }
     
 }
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1240px){
+    
+    #interface{
+        padding: 0;
+        height: 1700px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #interfaceCardsContainer{
+        flex-direction: column;
+        height: 1100px;
+    }
+
+}
+
+@media screen and (max-width: 1145px){
+
+    #interfaceImage{
+        display: none;
+    }
+
+    #projectImageContainer{
+        display: none;
+    }
+
+    #labImageContainer{
+        display: none;
+    }
+
+    #projectTitle{
+        text-align: end;
+    }
+
+    #projectParagraph{
+        text-align: end;
+    }
     
 }
 
-@media screen and (max-width: 850px){
-    
-}
+@media screen and (max-width: 825px){
+   
+    #homeTextContent{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 
-@media screen and (max-width: 640px){
+        #homeTitle{
+            width: 340px;
+            height: 370px;
+        }
+
+        #homeParagraph{
+            width: 340px;
+            height: 58px;
+        }
+
+    #project{
+        height: 1000px;
+    }
+
+        #projectTextContainer{
+            width: 340px;
+            height: 800px;
+        }
+
+    #labTextContainer{
+        width: 340px;
+    }
+
+        #labTitleContent{
+            width: 340px;
+        }
+
+        #labParagraphContent{
+            width: 340px;
+            height: 500px;
+        }
+    
+
+    #interface{
+        height: 1800px;
+    }
+
+        #interfaceTextContainer{
+            width: 100%;
+            height: 450px;
+            margin-bottom: 30px;
+            margin-top: 40px;
+        }
+
+            #interfaceTitleContent{
+                margin-bottom: 20px;
+            }
+            
+            #interfaceParagraphContent{
+                width: 340px;
+                height: 392px;
+            }   
+
+        #interfaceCardsContainer{
+            margin-top: 30px;
+            height: 1300px;
+        }
+
+            .interfaceCards{
+                width: 280px;
+                height: 400px;
+            }
+
+                .interfaceCardsTextContent{
+                    margin-bottom: 30px;
+                    width: 230px;
+                    height: 250px;
+                }   
+
+                    .interfaceCardsTitleContent{
+                        width: 230px;
+                    }
+                    .interfaceCardsParagraphContent{
+                        width: 230px;
+                    }
+
    
 }
 /*  ------------ Responsive ------------ */
