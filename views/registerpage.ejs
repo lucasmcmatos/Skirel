@@ -7,47 +7,54 @@
     <link rel="stylesheet" type="text/css" href="styles/registerpage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo_cores_icones\icone fundo verde escuro.png">
 
     <title>Skirel</title>
 </head>
 <body>
 
     <div id="container">
+        <div id="headerContainer">
+            <h1>Cadastro</h1>
+        </div>
 
-        <form class="form">
-            <p class="title">Cadastro </p>
-            <p class="message">Cadastre-se para ter acesso à plataforma. </p>
-            <div class="flex">
-                <label>
-                    <input required="" placeholder="" type="text" class="input1">
-                    <span>Nome</span>
-                </label>
-        
-                <label>
-                    <input required="" placeholder="" type="text" class="input1">
-                    <span>Sobrenome</span>
-                </label>
-            </div>  
-                    
-            <label>
-                <input required="" placeholder="" type="email" class="input">
-                <span>Email</span>
-            </label> 
-                
-            <label>
-                <input required="" placeholder="" type="password" class="input">
-                <span>Senha</span>
-            </label>
-            <label>
-                <input required="" placeholder="" type="password" class="input">
-                <span>Confirme a Senha</span>
-            </label>
-            <button class="submit">Enviar</button>
-            <p class="signin">Já possui uma conta ? <a href="http://localhost:3000/login">Login</a> </p>
-        </form>
+        <div id="bodyContainer">
+            <form>
+                <div class="input-group">
+                    <label class="label">Nome</label>
+                    <input autocomplete="off" name="name" id="Name" class="input" type="text" required>
+                    <div></div>
+                </div>
 
+                <div class="input-group">
+                    <label class="label">Email</label>
+                    <input autocomplete="off" name="email" id="Email" class="input" type="email" required>
+                    <div></div>
+                </div>
+    
+                <div class="input-group">
+                    <label class="label">Senha</label>
+                    <input autocomplete="off" name="password" id="Password" class="input" type="password" required>
+                    <div></div>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Confirmar Senha</label>
+                    <input autocomplete="off" name="ConfirmPassword" id="ConfirmPassword" class="input" type="password">
+                    <div></div>
+                </div>
+
+                <input onclick="newUser()" id="submitButton" type="submit" placeholder="Entrar" value="Cadastrar">
+            </form>
+
+            <p>Ja possui uma conta? <a href="http://localhost:3000/login">Logar</a></p>
+
+            <a id="button" href="http://localhost:3000/">Voltar</a>
+        </div>
     </div>
 
+
+    <script src="scripts/registerpage.js"></script>
 </body>
 </html>

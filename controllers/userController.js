@@ -1,11 +1,11 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { validate } = require('email-validator');
 
 const userController = {
     register: async function (req , res){
         
-
         // ------- Generate Foreing Key -------
         const newForeingkey = req.body.name + req.body.password;
         // ------- Generate Foreing Key -------
@@ -27,26 +27,37 @@ const userController = {
             // Retornar Popup de Email ja existente
         }
 
-        const user = new User({
-            name: req.body.name,
-            bio: req.body.bio,
-            email: req.body.email,
-            foreing_key: cryptForeingKey,
-            password: cryptPassword,
-            contacts: req.body.contacts
-        })
-
-        try{
-            const savedUser = await user.save()
-            res.send(savedUser);
-
-             // Retornar a mensagem de usuario logado e solicitar login
-
-        } catch (err) {
-            res.status(400).send(err);
+        if(validate(req.body.email)){
+            const user = new User({
+                name: req.body.name,
+                email: req.body.email,
+                foreing_key: cryptForeingKey,
+                password: cryptPassword,
+                contacts: {
+                    instagram:"NULL",
+                    whatsapp: "NULL",
+                    linkedin: "NULL",
+                    tel:"NULL"
+                   },
+                bio: "NULL"
+            })
+    
+            try{
+                await user.save()
+                res.send("Usuario Cadastrado");
+                // res.render("homepage");
+                 // Retornar a mensagem de usuario logado e solicitar login
+    
+            } catch (err) {
+                return res.status(400).send(err);
+            }
+        }else{
+            return res.send("Email inválido!");
         }
-        // ------- Create New User -------
 
+        
+        // ------- Create New User -------
+       
     },
     login: async function (req , res){
         const selectedUser = await User.findOne({email: req.body.email});

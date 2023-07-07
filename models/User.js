@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     name: {type: String , required: true , minlenght: 3, maxlenght: 50},
-    bio: String,
+    bio: {type: String , maxlenght: 3000},
     email: {type: String , required: true,  minlenght: 3, maxlenght: 100},
     foreing_key: {type: String , minlenght: 6, maxlenght: 200},
     password: {type: String , required: true , minlenght: 6, maxlenght: 200},
@@ -54,8 +54,7 @@ const userSchema = new mongoose.Schema({
         model_description: String,
         model_framework: String,
         file: Buffer
-    }],
-    profile_image: Buffer
+    }]
 })
 
 module.exports = mongoose.model('User' , userSchema);

@@ -9,17 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link rel="icon" type="image/png" href="images/logo_cores_icones\icone fundo verde escuro.png">
+
     <title>Skirel</title>
 
 </head>
-<body onload="correctButton()">
-
+<body>
+    
     <div id="header">
+
         <div id="iconPlace">
-
+            <img id="logoHeader" src="images/logo_cores_icones/LogoSemFundo.png">
         </div>
-
+        
         <div id="buttonsPlace">
 
             <div class="buttonBox">
@@ -40,26 +42,29 @@
             <div class="buttonBox">
                 <a href="http://localhost:3000/cadastro" id="cadastroButton">Cadastro</a>
             </div>
-
-            <div id="showerBtn" onclick="showerf()">
-                <label class="burger" for="burger">
-                    <input type="checkbox" id="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
             
         </div>
+        
+        <div id="menuButton" onclick="Activate()">
+            <input id="checkBox" type="checkbox">
+            <label id="labelCheckBox" for="checkBox">
+                    <div id="line1"></div>
+                    <div id="line2"></div>
+                    <div id="line3"></div>
+            </label>
+        </div>
+
     </div>
+
         
     <div id="home">
-        
+    
         <div id="homeTextContent">
-            <h3 id="homeTitle" >Compartilhe os seus modelos preditivos com o mundo todo!</h3>
+            <img id="skirel" src="images/logo_cores_icones/Logo fundo claro.png">
+            <h3 id="homeTitle" >Compartilhe seus modelos preditivos com o mundo!</h3>
             <p id="homeParagraph">Acesse os modelos de pesquisadores e compartilhe os seus.</p>
             <div id="interfaceButton">
-                <a href="#" id="cadastroButton">Cadastro</a>
+                <a href="http://localhost:3000/cadastro" id="cadastroButton">Cadastro</a>
             </div>
         </div>
 
@@ -167,6 +172,29 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="buttonsPlaceHidden">
+        
+        <div class="buttonBox" >
+            <a href="http://localhost:3000/login" id="loginButton">Login</a>
+        </div>
+        <div class="buttonBox">
+            <a href="http://localhost:3000/cadastro" id="cadastroButton">Cadastro</a>
+        </div>
+        <div class="buttonBox">
+            <a href="#home">Home</a>
+        </div>
+        <div class="buttonBox">
+            <a href="#project">O Projeto</a>
+        </div>
+        <div class="buttonBox">
+            <a href="#lab">O Laboratório</a>
+        </div>
+        <div class="buttonBox">
+            <a href="#interface">A Interface</a>
+        </div>
+        
     </div>
     
 <script src="scripts/homepage.js"></script>

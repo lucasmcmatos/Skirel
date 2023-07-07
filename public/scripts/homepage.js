@@ -69,10 +69,21 @@ function showerT(){
     )
 }
 
-function correctButton(){
-    document.getElementById('burger').checked = false;
+function Activate(){
+    document.getElementById("menuButton").style.border = "solid 2px #7C8046";
+    document.getElementById("buttonsPlaceHidden").style.display = "flex";
+    setTimeout(()=>{
+        document.getElementById("menuButton").setAttribute("onclick","Deactivate()");
+    },200);
 }
 
+function Deactivate(){
+    document.getElementById("menuButton").style.border = "none";
+    document.getElementById("buttonsPlaceHidden").style.display = "none";
+    setTimeout(()=>{
+        document.getElementById("menuButton").setAttribute("onclick","Activate()");
+    },200);
+}
 
 // Recarregar a pagina quando usar o 'back' do Browser
 window.addEventListener( "pageshow", function ( event ) {

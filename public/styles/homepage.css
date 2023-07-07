@@ -37,20 +37,41 @@ html{
 
 #header{
     position: fixed;
-    background-color: #F9F9F9;
+    background-color: #eeeeee;
     width: 100%;
     height: 76px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     transition: .25s ease-in-out;
 }
 
+#buttonsPlaceHidden{
+    background-color: #eeeeee;
+    height: 290px;
+    width: 150px;
+    padding: 20px;
+    position: fixed;
+    right: 30px;
+    top: 60px;
+    display: flex;
+    border-radius: 5px;
+    border: solid 2px #7C8046;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
 #iconPlace{
-    background-color: blue;
+    display: none;
     margin-left: 50px;
     height: 60px;
     width: 60px;
+}
+
+#logoHeader{
+    width: 100%;
 }
 
 #buttonsPlace{
@@ -82,78 +103,13 @@ html{
     display: none;
 }
 
-.burger {
-    position: relative;
-    width: 30px;
-    height: 20px;
-    background: transparent;
-    cursor: pointer;
-    display: block;
-  }
-  
-  .burger input {
-    display: none;
-  }
-  
-  .burger span {
-    display: block;
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    background: black;
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
-  }
-  
-  .burger span:nth-of-type(1) {
-    top: 0px;
-    transform-origin: left center;
-  }
-  
-  .burger span:nth-of-type(2) {
-    top: 50%;
-    transform: translateY(-50%);
-    transform-origin: left center;
-  }
-  
-  .burger span:nth-of-type(3) {
-    top: 100%;
-    transform-origin: left center;
-    transform: translateY(-100%);
-  }
-  
-  .burger input:checked ~ span:nth-of-type(1) {
-    transform: rotate(45deg);
-    top: 0px;
-    left: 0px;
-  }
-  
-  .burger input:checked ~ span:nth-of-type(2) {
-    width: 0%;
-    opacity: 0;
-  }
-  
-  .burger input:checked ~ span:nth-of-type(3) {
-    transform: rotate(-45deg);
-    top: 21px;
-    left: 0px;
-  }
-
-.buttonBox:hover{
-    color: black;
-    font-size: 18px;
-}
-
 #loginButton{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 8px;
-    color: #1A75FF;
+    color: #7C8046;
     transition-duration: 0.2s;
 }
 
@@ -163,7 +119,7 @@ html{
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 2px;
-    background-color: #1A75FF;
+    background-color: #7C8046;
     color: white;
 }
 
@@ -173,7 +129,7 @@ html{
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 8px;
-    background-color: #1A75FF;
+    background-color: #7C8046;
     color: white;
     transition-duration: 0.2s;
 }
@@ -184,6 +140,52 @@ html{
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 2px;
+}
+
+#menuButton{
+    margin-right: 30px;
+    width: 30px;
+    height: 20px;
+    padding: 7px;
+    border-radius: 5px;
+    display: none;
+    cursor: pointer;
+}
+
+#checkBox{
+    display: none;
+}
+
+#labelCheckBox{
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+}
+
+#line1{
+    background-color: black;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+}
+
+#line2{
+    background-color: black;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+}
+
+#line3{
+    background-color: black;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
 }
 
 /* ------------ Header ------------ */
@@ -208,6 +210,12 @@ html{
         align-items: start;
 
     }
+
+        #skirel{
+            width:496px;
+            transform: translateY(-40px);
+            display: flex;
+        }
 
         #homeTitle{
             width: 592px;
@@ -299,7 +307,7 @@ html{
                     font-style: normal;
                     font-weight: 600;
                     font-size: 40px;
-                    color: #1975FF;
+                    color: #7C8046;
                     text-align: start;
                 }
                 
@@ -392,7 +400,7 @@ html{
                     font-size: 40px;
                     line-height: 28px;
                     text-align: start;
-                    color: #1975FF;
+                    color: #7C8046;
                 }
 
             #labParagraphContent{
@@ -454,7 +462,7 @@ html{
                     font-weight: 600;
                     font-size: 40px;
                     line-height: 28px;
-                    color: #1975FF;
+                    color: #7C8046;
                 }
 
             #interfaceParagraphContent{
@@ -562,56 +570,22 @@ html{
 /*  ------------ Responsive ------------ */
 
 
-@media screen and (max-width: 3900px){
 
-    body{
-        width: 100%;
+@media screen and (max-width: 1420px){
+    #buttonsPlace{
+        display: none;
     }
+    #menuButton{
+        display: block;
+    }
+
+    #iconPlace{
+        display: block;
+    }   
 
     #header{
-        height: 76px;
-        justify-content: center;
-        align-items: center;
-
-        /* flex-direction: column;
-        height: 450px; */
-
-
+        justify-content: space-between;
     }
-
-        #iconPlace{
-
-            display: none;
-            background-color: blue;
-            height: 60px;
-            width: 60px;
-            margin-top: 20px;
-            margin-left: 0;
-
-            /* display: flex; */
-        
-        
-        }
-
-        #buttonsPlace{
-            flex-direction: column;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            /* margin-bottom: 20px; */
-
-        }
-
-        .buttonBox{
-            display: none;
-        }
-
-        #shower{
-            display: flex;
-        }
-
-    
 }
 
 @media screen and (max-width: 1240px){
@@ -662,14 +636,22 @@ html{
         align-items: center;
     }
 
+
+        #skirel{
+            width:320px;
+            transform: translateY(-40px);
+            
+        }
         #homeTitle{
-            width: 340px;
-            height: 370px;
+            width: 440px;
+            height: 270px;
+            text-align: center;
         }
 
         #homeParagraph{
             width: 340px;
             height: 58px;
+            text-align: center;
         }
 
     #project{
@@ -681,6 +663,14 @@ html{
             height: 800px;
         }
 
+            #projectTitle{
+                text-align: center;
+            }
+
+            #projectParagraph{
+                text-align: center;
+            }
+
     #labTextContainer{
         width: 340px;
     }
@@ -689,10 +679,18 @@ html{
             width: 340px;
         }
 
+            #labTitle{
+                text-align: center;
+            }
+
         #labParagraphContent{
             width: 340px;
             height: 500px;
         }
+
+            #labParagraph{
+                text-align: center;
+            }
     
 
     #interface{
@@ -739,5 +737,24 @@ html{
                     }
 
    
+}
+
+@media screen and (max-width: 437px){
+    #skirel{
+        width:320px;
+        transform: translateY(-40px);
+        
+    }
+    #homeTitle{
+        width: 320px;
+        height: 380px;
+        text-align: center;
+    }
+
+    #homeParagraph{
+        width: 340px;
+        height: 58px;
+        text-align: center;
+    } 
 }
 /*  ------------ Responsive ------------ */

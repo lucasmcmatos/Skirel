@@ -7,34 +7,41 @@
     <link rel="stylesheet" type="text/css" href="styles/loginpage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo_cores_icones\icone fundo verde escuro.png">
 
     <title>Skirel</title>
+
 </head>
 <body>
 
-    
     <div id="container">
+        <div id="headerContainer">
+            <h1>Login</h1>
+        </div>
 
-        <form class="form">
-            <p class="title">Login </p>
-            <p class="message">Faça o Login para ter acesso à plataforma. </p> 
-                    
-            <label>
-                <input required="" placeholder="" type="email" class="input">
-                <span>Email</span>
-            </label> 
-                
-            <label>
-                <input required="" placeholder="" type="password" class="input">
-                <span>Senha</span>
-            </label>
-            
-            <button class="submit">Enviar</button>
-            <p class="signin">Ainda não possui uma conta ? <a href="http://localhost:3000/cadastro">Cadastro</a> </p>
-        </form>
+        <div id="bodyContainer">
+            <form>
+                <div class="input-group">
+                    <label class="label">Email</label>
+                    <input autocomplete="off" name="Email" id="Email" class="input" type="email">
+                    <div></div>
+                </div>
+    
+                <div class="input-group">
+                    <label class="label">Senha</label>
+                    <input autocomplete="off" name="Email" id="Email" class="input" type="password">
+                    <div></div>
+                </div>
 
+                <input id="submitButton" type="submit" placeholder="Entrar" value="Entrar">
+            </form>
+
+            <p>Esqueceu sua senha ? <a href="#">Recuperar</a></p>
+            <p>Não possui uma conta? <a href="http://localhost:3000/cadastro">Cadastrar</a></p>
+
+            <a id="button" href="http://localhost:3000/">Voltar</a>
+        </div>
     </div>
 
 </body>
