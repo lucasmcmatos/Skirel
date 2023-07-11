@@ -29,5 +29,3 @@ function newUser(){
     }
    
 }   
-
-/* TRATAR OS DADOS O CON */

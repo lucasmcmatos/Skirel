@@ -1,0 +1,38 @@
+#bodyContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#containerBoxNew{
+    /* background-color: blue; */
+    width: calc(100% - 60px);
+    height: calc(100% - 40px) ;
+}
+
+#titleContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 50px;
+}
+
+#subtile{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'Open Sans';
+    color: #728095;
+    font-weight: 600;
+}
+
+#titleHome{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-family: 'Open Sans';
+    color: #0F2744;
+    font-weight: 600;
+}

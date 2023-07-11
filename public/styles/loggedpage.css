@@ -1,0 +1,137 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+ul{
+    padding-left: 25px;
+}
+
+/*BARRA DE NAVEGACAO*/
+
+#navbarBody{
+    position: absolute;
+    width: 230px;
+    height: 100vh;
+    border-right: 1px solid #E6EAEE;
+    display: flex;
+    flex-direction: column;
+}
+
+#imageContainer{
+    /* background-color: blue; */
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navbarContainer{
+    width: 100%;
+    height: calc(100vh - 180px);
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+
+#navbar{
+    /* background-color: blue; */
+    width: 100%;
+    height: 235px ;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.navButtons{
+    text-decoration: none;
+    color: #ABB8CA ;
+    font-size: 14px;
+    font-family: 'Open Sans';
+}
+
+.navButtonsSelected{
+    text-decoration: none;
+    color: #7C8046 ;
+    font-size: 14px;
+    font-family: 'Open Sans';
+}
+
+#homeicon{
+    margin-right: 15px ;
+    transform: translateY(2px);
+}
+
+#gridicon{
+    margin-right: 15px ;
+    transform: translateY(3px);
+}
+
+#comunityicon{
+    margin-right: 15px ;
+
+}
+
+#profileicon{
+    margin-right: 15px ;
+    transform: translateY(2px);
+}
+
+#logoutContainer{
+    /* background-color: blue; */
+    width: 100%;
+    height: 150px ;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#logoutButton{
+    margin-left: 25px;
+    font-size: 14px;
+}
+
+#logouticon{
+    transform: translateY(4px);
+    margin-right: 15px ;
+}
+
+/*BARRA DE NAVEGACAO*/
+/*HEADER*/
+
+#header{
+    position: absolute;
+    /* background-color: blue; */
+    border-bottom: 1px solid #E6EAEE;
+    width: calc(100% - 230px);
+    left: 230px;
+    height: 65px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#notificationsContainer{
+    /* background-color: red; */
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*HEADER*/
+
+#container{
+    position: absolute;
+    top: 65px;
+    left: 230px;
+    width: calc(100% - 230px);
+    height: calc(100vh - 65px);
+}
+

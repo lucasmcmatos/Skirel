@@ -1,0 +1,133 @@
+#bodyContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#containerBoxNew{
+    /* background-color: blue; */
+    width: calc(100% - 60px);
+    height: calc(100% - 40px) ;
+}
+
+#titleContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 50px;
+}
+
+#subtile{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'Open Sans';
+    color: #728095;
+    font-weight: 600;
+}
+
+#titleHome{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-family: 'Open Sans';
+    color: #0F2744;
+    font-weight: 600;
+}
+
+#accessNetworkingContainer{
+    margin-top: 30px;
+    width: 100%;
+    height: 430px;
+    display: flex;
+    flex-direction: row;
+}
+
+#accessContainer{
+    height: 100%;
+    width: 65%;
+    border-radius: 8px;
+    border: solid 1px #E6EAEE    ;
+}
+
+#accessHeader{
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#accessTitleContainer{
+    /* background-color: blue; */
+    height: 100%;
+    width: 300px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+#accessTitle{
+    margin-left: 25px;
+    font-family: 'Open Sans';
+    font-size: 17px ;
+    font-weight: 600;
+    color: #0F2744 ;
+}
+
+#accessChoiceContainer{
+    /* background-color: blue; */
+    height: 100%;
+    width: 261px;
+    display: flex;
+    flex-direction: row;
+}
+
+.accessChoiceButtonContainer{
+    /* background-color: red; */
+    width: 87px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.accessChoiceTitle{
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 400;
+    color: #728095;
+}
+
+#networkContainer{
+    height: 100%;
+    width: 34%;
+    border-radius: 8px;
+    border: solid 1px #E6EAEE;
+    margin-left: 6px;  
+}
+
+#networkingHeader{
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#networkingTitle{
+    margin: 0;
+    padding: 0;
+    margin-left: 25px;
+    font-family: 'Open Sans';
+    font-size: 17px ;
+    font-weight: 600;
+    color: #0F2744 ;
+}

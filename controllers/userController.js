@@ -24,7 +24,6 @@ const userController = {
 
         if(selectedUser){
             return res.status(400).send('Email already exist');
-            // Retornar Popup de Email ja existente
         }
 
         if(validate(req.body.email)){
@@ -45,14 +44,11 @@ const userController = {
             try{
                 await user.save()
                 res.send("Usuario Cadastrado");
-                // res.render("homepage");
-                 // Retornar a mensagem de usuario logado e solicitar login
-    
             } catch (err) {
                 return res.status(400).send(err);
             }
         }else{
-            return res.send("Email inválido!");
+            return res.status(400).send("Email inválido!");
         }
 
         

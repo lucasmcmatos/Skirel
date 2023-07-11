@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="styles/loggedpage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="icon" type="image/png" href="images/logo_cores_icones\icone fundo verde escuro.png">
+
+    <title>Skirel</title>
+</head>
+<body>
+    <div id="container">
+        <%if(query == "Home"){%>
+            <%- include('partials_logged/loggedhome') -%>
+        <%} else if(query == "Meus_Modelos"){%>
+            <%- include('partials_logged/loggedmymodels') -%>
+        <%} else if(query == "Comunidade"){%>
+            <%- include('partials_logged/loggedcommunity') -%>
+        <%} else if(query == "Perfil"){%>
+            <%- include('partials_logged/loggedprofile') -%>
+        <%}%>
+    </div>
+
+    <!-- Statics -->
+    <div id="navbarBody">
+        <div id="imageContainer">
+            <img src="images/logo_cores_icones/LogoSemFundo.png" width="70px">
+        </div>
+
+        <div id="navbarContainer">
+            <div id="navbar">
+                <ul>
+                    <li>
+                        <%if(query == "Home"){%>
+                            <a href="http://localhost:3000/Welcome?View=Home" class="navButtonsSelected"> <img id="homeicon" src="images/NavbarIcons/homeIconSelected.svg"> Home</a>
+                        <%}else{%>
+                            <a href="http://localhost:3000/Welcome?View=Home" class="navButtons"> <img id="homeicon" src="images/NavbarIcons/homeIconUnselected.svg"> Home</a>
+                        <%}%>
+                    </li>
+                    <li>
+                        <%if(query == "Meus_Modelos"){%>
+                            <a href="http://localhost:3000/Welcome?View=Meus_Modelos" class="navButtonsSelected"> <img id="gridicon" src="images/NavbarIcons/gridIconSelected.svg"> Meus Modelos</a>
+                        <%}else{%>
+                            <a href="http://localhost:3000/Welcome?View=Meus_Modelos" class="navButtons"> <img id="gridicon" src="images/NavbarIcons/gridIconUnselected.svg"> Meus Modelos</a>
+                        <%}%>
+                    </li>
+                    <li>
+                        <%if(query == "Comunidade"){%>
+                            <a href="http://localhost:3000/Welcome?View=Comunidade" class="navButtonsSelected"> <img id="comunityicon" src="images/NavbarIcons/comunityIconsSelected.svg"> Comunidade</a>
+                        <%}else{%>
+                            <a href="http://localhost:3000/Welcome?View=Comunidade" class="navButtons"> <img id="comunityicon" src="images/NavbarIcons/comunityIconUnselected.svg"> Comunidade</a>
+                        <%}%>
+                    </li>
+                    <li>
+                        <%if(query == "Perfil"){%>
+                            <a href="http://localhost:3000/Welcome?View=Perfil" class="navButtonsSelected"> <img id="profileicon" src="images/NavbarIcons/profileIconSelected.svg"> Perfil</a>
+                        <%}else{%>
+                            <a href="http://localhost:3000/Welcome?View=Perfil" class="navButtons"> <img id="profileicon" src="images/NavbarIcons/profileIconUnselected.svg"> Perfil</a>
+                        <%}%>
+
+                    </li>
+                </ul>
+            </div>
+            <div id="logoutContainer">
+                <a href="#" class="navButtons" id="logoutButton"> <img id="logouticon" width="20px" src="images/NavbarIcons/logoutIcon.svg"> Sair</a>
+            </div>
+        </div>
+    </div>
+    <div id="header">
+        <div id="notificationsContainer">
+            <a href="#"><img src="images/NavbarIcons/notificationsIcon.svg"></a>
+        </div>
+    </div>
+    <!-- Statics -->
+
+    <script src="scripts/loggedpage.js"></script>
+</body>
+</html>
