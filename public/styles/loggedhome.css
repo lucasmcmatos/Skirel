@@ -43,6 +43,7 @@
     height: 430px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 #accessContainer{
@@ -95,8 +96,25 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: .1s ease-in;
 }
 
+.accessChoiceButtonContainer:hover{
+    background-color: #ebebeb;
+}
+
+.accessChoiceButtonContainerSelected{
+    width: 87px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* cursor: pointer; */
+    border-bottom: 1px solid #7C8046;
+    background-color: #F5F6E9;
+    transition: .1s ease-in;
+
+}
 
 .accessChoiceTitle{
     font-family: 'Open Sans';
@@ -105,13 +123,33 @@
     color: #728095;
 }
 
+.accessChoiceTitleSelected{
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 400;
+    color: #0F2744;
+}
+
+#accessBody{
+    width: 100%;
+    height: calc(100% - 55px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #networkContainer{
     height: 100%;
     width: 34%;
     border-radius: 8px;
     border: solid 1px #E6EAEE;
-    margin-left: 6px;  
 }
+
+#chartContainer{
+    width: calc(100% - 20px);
+    height:  calc(100% - 20px);
+}
+
 
 #networkingHeader{
     width: 100%;
@@ -130,4 +168,232 @@
     font-size: 17px ;
     font-weight: 600;
     color: #0F2744 ;
+}
+
+#networkingBody{
+    width: 100%;
+    height: calc(100% - 55px);
+    overflow-y: scroll;
+} 
+
+#networkingBody::-webkit-scrollbar{
+    width: 0px;
+}
+
+#usersList{
+    margin: 0;
+    padding: 0;
+}
+
+.userContainer{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50px ;
+    margin-bottom: 7px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+.userContainer:hover{
+    background-color: #ebebeb;
+}
+
+.profileImgContainer{
+    height: 100%;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userDataContainer{
+    height: 100%;
+    width: calc(100% - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}   
+
+.deleteContainer{
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userDataName{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+.userDataModels{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 13px;
+    font-weight: 400;
+    color: #728095;
+}
+
+.imgDelete{
+    transition: .1s ease-in; 
+} 
+
+.imgDelete:hover{
+    width: 25px;
+}
+
+
+/* Meus modelos */
+
+#myModelsContainer{
+    /* background-color: red; */
+    border-radius: 8px;
+    border: 1px solid #E6EAEE;
+    margin-top: 17px;
+    width: 100%;
+    height: calc(100% - 527px);
+}
+
+#myModelsHeader{
+    /* background-color: blue; */
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#myModelsTitle{
+    margin: 0;
+    margin-left: 25px;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+#myModelsBody{
+    /* background-color: blue; */
+    width: 100%;
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+}
+
+#myModelsBodyHeader{
+    background-color: #F5F6E9;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.modelNameContainer{
+    /* background-color: green; */
+    height: 100%;
+    width: 280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.modelTypeContainer{
+    /* background-color: blue; */
+    height: 100%;
+    width: calc(100% - 700px);
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.modelFrameworkContainer{
+    /* background-color: green; */
+    height: 100%;
+    width: 280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.modelAccessContainer{
+    /* background-color: blue; */
+    height: 100%;
+    width: 140px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.modelsBHtitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #728095;
+}
+
+#myModelsListContainer{
+    /* background-color: blue; */
+    width: 100%;
+    height: calc(100%  - 55px);
+    overflow-y: scroll;
+}
+
+#myModelsListContainer::-webkit-scrollbar{
+    width: 0;
+}
+
+#myModelsList{
+    margin: 0;
+    padding: 0; 
+}
+
+
+.myModelIten{
+    /* background-color: #F5F6E9; */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #E6EAEE;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+.myModelIten:hover{
+    background-color: #ebebeb;
+}
+
+.modelstitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F2744;
 }
