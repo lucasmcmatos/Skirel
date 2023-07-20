@@ -2,13 +2,9 @@ const express = require('express');
 const router = express.Router();
 const interfaceController = require('../controllers/interfaceController');
 
-// router.get('/Welcome', interfaceController.verifyToken  ,  (req , res)=>{
-//     res.render('loggedpage')
-// });
-
-router.get('/Welcome' ,  (req , res)=>{
-
-    res.render('loggedpage', {query: req.query.View}) // TEMPORARIO, QUANDO FOR USAR, DESCOMENTAR O DE CIMA 
+router.get('/Welcome', interfaceController.verifyToken  ,  (req , res)=>{
+    res.header('authorization-token', req.header('authorization-token')) // Recebe do header da requisição e manda no header da resposta
+    res.render('loggedpage', {query: req.query.View})
 });
 
 router.get('/' , (req , res)=>{

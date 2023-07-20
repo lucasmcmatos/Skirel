@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/loginpage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> 
     <link rel="icon" type="image/png" href="images/logo_cores_icones\icone fundo verde escuro.png">
 
     <title>Skirel</title>
@@ -16,31 +16,13 @@
 <body>
 
     <div id="container">
-        <div id="headerContainer">
-            <h1>Login</h1>
+        <div id="containerHeader">
+            <h1 id="containerTitle">LOGIN</h1>
         </div>
-
-        <div id="bodyContainer">
+        <div id="containerBody">
             <form>
-                <div class="input-group">
-                    <label class="label">Email</label>
-                    <input autocomplete="off" name="Email" id="Email" class="input" type="email">
-                    <div></div>
-                </div>
-    
-                <div class="input-group">
-                    <label class="label">Senha</label>
-                    <input autocomplete="off" name="Password" id="Password" class="input" type="password">
-                    <div></div>
-                </div>
-
-                <input id="submitButton" type="submit" placeholder="Entrar" value="Entrar">
+                
             </form>
-
-            <p>Esqueceu sua senha ? <a href="http://localhost:3000/Recuperar_Senha">Recuperar</a></p>
-            <p>Não possui uma conta? <a href="http://localhost:3000/Cadastro">Cadastrar</a></p>
-
-            <a id="button" href="http://localhost:3000/">Voltar</a>
         </div>
     </div>
 

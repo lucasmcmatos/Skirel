@@ -4,6 +4,7 @@ const interfaceController = {
     verifyToken: function (req , res , next){
         
         const token = req.header('authorization-token');
+    
         if(!token) return res.status(401).send('Access Denied: Do new authentication')
         
         try{
@@ -13,7 +14,7 @@ const interfaceController = {
             next();
 
         }catch(err){
-            
+
             res.status(401).send('Access Denied: Do new authentication')
 
         }
