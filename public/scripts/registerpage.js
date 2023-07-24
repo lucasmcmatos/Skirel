@@ -1,31 +1,36 @@
-function newUser(){
-    if(
-        document.getElementById("Name").value != "" &&
-        document.getElementById("Email").value != "" &&
-        document.getElementById("Password").value != "" &&
-        document.getElementById("ConfirmPassword").value != ""
-    ){
-        if(document.getElementById("Password").value == document.getElementById("ConfirmPassword").value){
-            
-                let newName =  document.getElementById("Name").value;
-                let newEmail = document.getElementById("Email").value;
-                let newPassword = document.getElementById("Password").value;
+  document.getElementById('registerForm').addEventListener('submit', (event)=>{
+    event.preventDefault();
 
-                let newUser = {name: newName, email: newEmail, password: newPassword} 
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+    const confirmPassword = document.getElementById('confirmPassword').value
+    const name = document.getElementById('name').value
 
-                const options = {
-                    method:"POST",
-                    headers: new Headers({'content-type':'application/json'}),
-                    body: JSON.stringify(newUser)
-                }
-                
-                fetch("http://localhost:3000/auth/register", options)
-           
-        } else{
-            alert('"Senha" e "Confirmar Senha" devem ser iguais!');
-        }   
-    } else{
-        alert('Todos os campos devem ser preenchidos!');
+    if(password != confirmPassword){
+      alert('Cofirme a Senha deve ser igual senha.')
+    }else{
+      const formData = {
+        email: email,
+        name: name,
+        password: password
+      }
+
+      fetch('/auth/register', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      }).then(res => res.json()).then(data => {
+        if(data.sucess){
+          alert(data.message);
+        }else{
+          alert(data.message);
+        }
+      }).catch(err => {
+        console.log('Houve um erro: ', err)
+        alert("Ocorreu um erro ao tentar fazer login.")
+      })
     }
-   
-}   
+
+  })

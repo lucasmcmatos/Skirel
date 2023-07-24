@@ -81,9 +81,24 @@ const userController = {
         const userRegisted = await addUser(req.body.name, req.body.email, req.body.password);
 
         if(userRegisted){
-            res.send('Usuário cadastrado com sucesso.')
+            const resp = {
+                succes: true,
+                message: 'USUÁRIO CADASTRADO COM SUCESSO. ',
+                user:{
+                    email:req.body.email,
+                }
+            }
+
+            res.status(200).json(resp);
         }else{
-            res.status(400).send('Email ja foi cadastrado.')
+            const resp = {
+                succes: false,
+                message: 'ERRO AO FAZER LOGIN. Email já foi cadastrado.',
+                user:{
+                    email:req.body.email,
+                }
+            }
+            res.status(400).json(resp)
         }
 
     },
@@ -102,22 +117,52 @@ const userController = {
         const result = await dynamodb.scan(params).promise();
 
         if (result.Items.length == 0){
-            res.status(404).send('Email não encontrado.')
+
+            const resp = {
+                success: false,
+                message: 'Email não encontrado.',
+                user:{
+                    email: email
+                }
+            }
+
+            res.status(404).json(resp)
+        }else{
+            const selectedUser = result.Items[0];
+            const passwordTest = selectedUser.password;
+            const passwordMatch = bcrypt.compareSync(password , passwordTest)
+
+            if(!passwordMatch){
+
+                const resp = {
+                    success: false,
+                    message: 'Email ou senha incorretos.',
+                    user:{
+                        email: email
+                    }
+                }
+
+                return res.status(400).json(resp)
+
+            }else{
+                const token = jwt.sign({_id: selectedUser.user_id} , process.env.TOKEN_SECRET);
+
+                const resp = {
+                    success: true,
+                    message: 'Usuário logado com sucesso',
+                    user:{
+                        email: email,
+                        token: token
+                    }
+                }
+
+                res.status(200).json(resp);
+            }
+
+           
         }
 
-        const selectedUser = result.Items[0];
-        const passwordTest = selectedUser.password;
-        const passwordMatch = bcrypt.compareSync(password , passwordTest)
-
-        if(!passwordMatch){
-            return res.status(400).send('Email ou senha incorretos.')
-
-        }
-
-        const token = jwt.sign({_id: selectedUser.user_id} , process.env.TOKEN_SECRET);
-
-        res.header('authorization-token', token);
-        res.send('Usuário logado com sucesso.');
+        
     }  
 }
 
