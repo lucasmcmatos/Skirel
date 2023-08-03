@@ -56,6 +56,13 @@
                         <%}%>
                     </li>
                     <li>
+                        <%if(query == "Espaço_de_Trabalho"){%>
+                            <a href="http://localhost:3000/Welcome?View=Espaço_de_Trabalho" class="navButtonsSelected"  id="navButtonWorkspace"><img id="workspaceicon" src="images/NavbarIcons/workspaceSelected.svg"> Espaço de Trabalho</a>
+                        <%}else{%>
+                            <a href="http://localhost:3000/Welcome?View=Espaço_de_Trabalho" class="navButtons" id="navButtonWorkspace"><img id="workspaceicon" src="images/NavbarIcons/workspaceUnselected.svg"> Espaço de Trabalho</a>
+                        <%}%>
+                    </li>
+                    <li>
                         <%if(query == "Perfil"){%>
                             <a href="http://localhost:3000/Welcome?View=Perfil" class="navButtonsSelected"> <img id="profileicon" src="images/NavbarIcons/profileIconSelected.svg"> Perfil</a>
                         <%}else{%>
@@ -66,14 +73,35 @@
                 </ul>
             </div>
             <div id="logoutContainer">
-                <a href="#" class="navButtons" id="logoutButton"> <img id="logouticon" width="20px" src="images/NavbarIcons/logoutIcon.svg"> Sair</a>
+                <a href="http://localhost:3000/" class="navButtons" id="logoutButton"> <img id="logouticon" width="20px" src="images/NavbarIcons/logoutIcon.svg"> Sair</a>
             </div>
         </div>
     </div>
     <div id="header">
-        <div id="notificationsContainer">
-            <a href="#"><img src="images/NavbarIcons/notificationsIcon.svg"></a>
+        <div onclick="showNotifications()" id="notificationsContainer">
+            <a href="#"><img id="notificationsImg" src="images/NavbarIcons/notificationsIcon.svg"></a>
         </div>
+    </div>
+
+    <div id="notificationsContent">
+        <div id="notificationsHeader">
+            <h1 id="notificationsTitle">Notificações</h1>
+        </div>
+        <div id="notificationsBody">
+            <ul id="notificationsList"> 
+                
+                <li class="notification">
+                    <a href="http://localhost:3000/Welcome?View=Comunidade" class="notificationLink">
+                        <div class="notificationProfile">AD</div>
+                        <div class="notificationsBody">
+                            <h1 class="notificationTitle"><strong>Admin</strong> mandou uma mensagem</h1>
+                            <p class="notificationDescription">Bem-vindo à interface Skirel.</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
     <!-- Statics -->
 

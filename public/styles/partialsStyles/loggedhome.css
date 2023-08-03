@@ -1,0 +1,503 @@
+#bodyContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#containerBoxNew{
+    /* background-color: blue; */
+    width: calc(100% - 60px);
+    height: calc(100% - 40px) ;
+}
+
+#titleContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 50px;
+}
+
+#subtile{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'Open Sans';
+    color: #728095;
+    font-weight: 600;
+}
+
+#titleHome{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-family: 'Open Sans';
+    color: #0F2744;
+    font-weight: 600;
+}
+
+#accessNetworkingContainer{
+    margin-top: 30px;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#chartsContainer{
+    border: 1px solid #E6EAEE;
+    border-radius: 8px;
+    width: 70%;
+    margin-right: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chartsHeader{
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    align-items: center;
+}
+
+#chartTitle{
+    font-family: 'Open Sans';
+    font-size: 17px;
+    font-weight: 600;
+    color: #0F2744;
+    margin-left: 20px;
+}
+
+#chartsBody{
+    margin-top: 10px;
+    width: calc(100% - 30px);
+    height: calc(100% - 65px);
+}
+
+
+
+
+#networkContainer{
+    height: 100%;
+    width: 30%;
+    border-radius: 8px;
+    border: solid 1px #E6EAEE;
+}
+
+#networkingHeader{
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#networkingTitle{
+    margin: 0;
+    padding: 0;
+    margin-left: 25px;
+    font-family: 'Open Sans';
+    font-size: 17px ;
+    font-weight: 600;
+    color: #0F2744 ;
+}
+
+#networkingBody{
+    width: 100%;
+    height: calc(100% - 55px);
+    overflow-y: scroll;
+} 
+
+#networkingBody::-webkit-scrollbar{
+    width: 0px;
+}
+
+#usersList{
+    margin: 0;
+    padding: 0;
+}
+
+.userContainer{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50px ;
+    /* margin-bottom: 7px; */
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+.userContainer:hover{
+    background-color: #ebebeb;
+}
+
+.profileImgContainer{
+    background-color:#0F2744;
+    color: #fff;
+    font-family: 'Open Sans';
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    transform: translateY(-2px);
+}
+
+.userDataContainer{
+    height: 100%;
+    width: calc(100% - 80px);
+    transform: translateY(-2px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}   
+
+.deleteContainer{
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userDataName{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+.userDataModels{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 13px;
+    font-weight: 400;
+    color: #728095;
+}
+
+.imgDelete{
+    transition: .1s ease-in; 
+    margin-right: 20px;
+} 
+
+.imgDelete:hover{
+    width: 25px;
+}
+
+
+/* Meus modelos */
+
+#myModelsContainer{
+    /* background-color: red; */
+    border-radius: 8px;
+    border: 1px solid #E6EAEE;
+    margin-top: 17px;
+    width: 100%;
+    height: calc(100% - 450px);
+}
+
+#myModelsHeader{
+    /* background-color: blue; */
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#myModelsTitle{
+    /* background-color: blue; */
+    margin: 0;
+    margin-left: 25px;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+#myModelsBody{
+    /* background-color: blue; */
+    width: 100%;
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+}
+
+#myModelsBodyHeader{
+    background-color: #E6EAEE;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.modelNameContainer{
+    /* background-color: green; */
+    height: 100%;
+    width: 280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.modelTypeContainer{
+    /* background-color: blue; */
+    height: calc(100% - 10px);
+    width: calc(100% - 700px);
+    overflow-y: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.modelsdescription{
+    margin-top: 10px;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+.modelTypeContainer::-webkit-scrollbar{
+    width: 0;
+}
+
+.modelFrameworkContainer{
+    /* background-color: green; */
+    height: 100%;
+    width: 280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.modelAccessContainer{
+    /* background-color: blue; */
+    height: 100%;
+    width: 140px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.modelsBHtitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #728095;
+}
+
+#myModelsListContainer{
+    /* background-color: blue; */
+    width: 100%;
+    height: calc(100%  - 55px);
+    overflow-y: scroll;
+}
+
+#myModelsListContainer::-webkit-scrollbar{
+    width: 0;
+}
+
+#myModelsList{
+    margin: 0;
+    padding: 0; 
+}
+
+
+.myModelIten{
+    /* background-color: #F5F6E9; */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+.myModelItenLink{
+    margin: 0;
+    padding: 0;
+    padding-right: 20px;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    
+}
+
+.myModelIten:hover{
+    background-color: #F5F6E9;
+}
+
+.modelstitle{
+    /* background-color: blue; */
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+.networkingPopupContainer{
+    background-color: #E6EAEE;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open sans';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.networkingPopupTitle{
+    
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.networkingPopupText{
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.networkingPopupLink{
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 10px 5px 10px;
+    background-color: #7c8046a8;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+    transition: .1s ease-in;
+}
+.networkingPopupLink:hover{
+    background-color: #7c8046;
+}
+
+.chartsPopupContainer{
+    background-color: #ebebeb;
+    width: calc(100% + 30px);
+    height: calc(100% + 10px);
+    transform: translateX(-15px) translateY(-10px);
+    font-family: 'Open sans';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.chartsPopupTitle{
+    
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.chartsPopupText{
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.chartsPopupLink{
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 10px 5px 10px;
+    background-color: #7c8046a8;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.modelsPopupContainer{
+    background-color: #ebebeb;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open sans';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.modelsPopupTitle{
+    
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.modelsPopupText{
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.modelsPopupLink{
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 10px 5px 10px;
+    background-color: #7c8046a8;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+}

@@ -22,7 +22,7 @@
         },
         body: JSON.stringify(formData)
       }).then(res => res.json()).then(data => {
-        if(data.sucess){
+        if(data.success){
           alert(data.message);
         }else{
           alert(data.message);

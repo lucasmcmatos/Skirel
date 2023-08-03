@@ -1,5 +1,22 @@
 const jwt = require('jsonwebtoken');
 
+// ====================== Banco de Dados ===================================
+
+const AWS = require('aws-sdk');
+const { v4: uuidv4 } = require('uuid');
+const { param } = require('../routes/userRouter');
+
+AWS.config.update({
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: 'us-east-2'
+});
+
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+const tablename = "Skirel";
+
+// ========================== Banco de Dados ===============================
+
 const interfaceController = {
     verifyToken: function (req , res , next){
         
@@ -14,11 +31,48 @@ const interfaceController = {
             next();
 
         }catch(err){
-
-            res.status(401).send('Access Denied: Do new authentication')
-
+            const resp ={
+                success: false,
+                message: 'Access Denied: Do new authentication'
+            }
+            res.status(401).json(resp)
         }
     
+    },
+    userData: async function(req, res){
+        const email = req.params.userEmail
+
+        const params = {
+            TableName: tablename,
+            FilterExpression: 'email = :email',
+            ExpressionAttributeValues: {
+                ':email': email,
+                },
+            };
+    
+        const result = await dynamodb.scan(params).promise();
+
+        const user = result.Items[0];
+
+        if(user){
+            const resp = {
+                success: true,
+                message: 'Dados do usuário encontrados.',
+                user: user
+            }
+
+            res.status(200).json(resp)
+        }else{
+            const resp = {
+                success: false,
+                message: 'Dados do usuário não encontrados.'
+            }
+
+            res.status(401).json(resp)
+        }
+
+    
+
     }
 }
 

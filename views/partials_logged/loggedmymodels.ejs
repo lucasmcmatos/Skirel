@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="styles/loggedmymodels.css"> 
+<link rel="stylesheet" type="text/css" href="styles/partialsStyles/loggedmymodels.css"> 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -31,194 +31,16 @@
                     <h2 class="modelsBHtitle">Framework</h2>
                 </div>
                 <div class="modelAccessContainer">
-                    <h2 class="modelsBHtitle">Tamanho</h2>
+                    <h2 class="modelsBHtitle">Acessos</h2>
                 </div>
             </div>
 
-            <ul id="myModelsList">
-                <li onclick="showModel()" class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-
-
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-
-                <li class="myModelIten">
-                    <div class="modelNameContainer">
-                        <h2 class="modelstitle">Modelo 1</h2>
-                    </div>
-                    <div class="modelTypeContainer">
-                        <h2 class="modelstitle">BCC</h2>
-                    </div>
-                    <div class="modelFrameworkContainer">
-                        <h2 class="modelstitle">TensorFlow</h2>
-                    </div>
-                    <div class="modelAccessContainer">
-                        <h2 class="modelstitle">15 mb</h2>
-                    </div>
-                </li>
-            </ul>
+            <ul id="myModelsList"></ul>
         </div>
     </div>
 
-    <div id="viewContainer">
-
-        <div id="importContainer">
-            <div id="importContainerHeader">
-                <h1 id="importContainerTitle">Informações do Modelo</h1>
-                <div class="closeContainer"  onclick="closeImportModelView()" ><img src="images/closeIcon.svg"></div>
-            </div>
-            <div id="importContainerBody">
-                <form>
-                    <div id="fileInputContainer">
-                        <h1 class="containerTitle"> Arquivo do modelo</h1>
-                        <div id="uploadContainer">
-                            <button id="btnWarning">
-                                <img id="btnWarningImg" src="images/uploadImage.svg" width="20px">   Selecione um Arquivo
-                                <input type="file">
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="modelNameInputContainer">
-                        <h1 class="containerTitle"> Nome do modelo</h1>
-                        <input type="text" id="modelNameContainer">
-                    </div>
-
-                    <div id="modelDescriptionContainer">
-                        <h1 class="containerTitle"> Descrição do modelo</h1>
-                        <textarea id="modelDescription" maxlength="400" placeholder="Máx.: 400 caracteres"></textarea>
-                    </div>
-
-                    <div id="modelFrameworkContainer">
-                        <h1 class="containerTitle">Framework do modelo</h1>
-                        <select  id="modelFrameworkSelect">
-                            <option value="0">Selecione um Framework</option>
-                            <option value="1">TensorFlow</option>
-                            <option value="2">Scikit-Learn</option>
-                            <option value="3">Theano</option>
-                            <option value="4">Pytorch</option>
-                        </select>
-                        </div>
-                    </div>
-
-                    <div id="importOptionsConttainer">
-                        <button class="importOption">Criar modelo</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-    </div>
+    <div id="viewContainer"></div>
     
 </div>
 
-<script>
-    function showImportModelView(){
-        document.getElementById("viewContainer").style.display = "flex"
-        document.getElementById("importContainer").style.display = "flex"
-
-    }
-
-    function closeImportModelView(){
-        document.getElementById("viewContainer").style.display = "none"
-        document.getElementById("importContainer").style.display = "none"
-    }
-</script>
+<script src="scripts/partialsScripts/loggedmymodels.js"></script>

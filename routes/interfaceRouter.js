@@ -2,8 +2,26 @@ const express = require('express');
 const router = express.Router();
 const interfaceController = require('../controllers/interfaceController');
 
-router.get('/Welcome', interfaceController.verifyToken  ,  (req , res)=>{
-    res.header('authorization-token', req.header('authorization-token')) // Recebe do header da requisição e manda no header da resposta
+//  ========================== Verificação Token ===============================
+router.get('/verify', interfaceController.verifyToken, (req,res)=>{
+    const resp = {
+        success: true,
+        message: 'Acesso liberado.'
+    }
+    
+    res.status(200).json(resp)
+});
+
+//  ========================== Verificação Token ===============================
+
+//  ========================== Dados da Plataforma ===============================
+
+router.get('/data/:userEmail', interfaceController.userData)
+
+//  ========================== Dados da Plataforma ===============================
+
+//  ========================== Paginas ===============================
+router.get('/Welcome',  (req , res)=>{
     res.render('loggedpage', {query: req.query.View})
 });
 
@@ -23,5 +41,9 @@ router.get('/Recuperar_Senha', (req , res)=>{
     res.render('forgotpassword');
 })
 
+router.get('/password', (req,res)=>{
+    res.render('showpassword', {user: req.query.User});
+})
+//  ========================== Paginas ===============================
 
 module.exports = router;

@@ -3,34 +3,17 @@ const AWS = require('aws-sdk');
 const binaryData = ""
 
 const userSchema = {
-    user_id:'NULL',
-    name:'NULL',
-    email:'NULL',
-    password:'NULL',
-    bio:'NULL',
-    foreingKey:'NULL',
-    model_access:'NULL',
-    contacts:{
-        instagram:'NULL',
-        facebook:'NULL',
-        whatsapp:'NULL',
-        linkedin:'NULL'
-    },
-    models:[
-        {
-            name:'NULL',
-            description:'NULL',
-            framework:'NULL'
-        }
-    ],
-    networking:[{
-        name:'NULL',
-        foreingKey:'NULL',
-        id:'NULL'
-    }],
+    user_id:'String',
+    name:'String',
+    email:'String',
+    password:'String',
+    foreingKey:'String',
     notifications:[{
-        header:'NULL',
-        body:'NULL'
+        id:'String',
+        owner_user:'String',
+        header:'String',
+        body:'String',
+        createdAt:'Date'
     }]
 }
 

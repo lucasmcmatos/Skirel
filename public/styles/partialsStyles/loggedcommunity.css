@@ -1,0 +1,677 @@
+#bodyContainer{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#containerBoxNew{
+    /* background-color: blue; */
+    width: calc(100% - 60px);
+    display: flex;
+    align-items: center;
+    height: 90px;
+    margin-left: 30px;
+}
+
+#titleContainer{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+
+#subtile{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'Open Sans';
+    color: #728095;
+    font-weight: 600;
+    transform: translateY(2px);
+}
+
+#titleHome{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-family: 'Open Sans';
+    color: #0F2744;
+    font-weight: 600;
+}
+
+#content{
+    /* background-color: blue; */
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+}
+
+#searchersConteiner{
+    
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewerContainer{
+    width: 70%;
+    height: 100%;
+}
+
+#users{
+    width: calc(100% - 40px);
+    /* height: calc(100% - 380px); */
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #E6EAEE;
+    overflow: hidden;
+    transition: .2s ease-in;
+}
+#userHeader{
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    justify-content: start;
+    padding-left: 20px;
+    align-items: center;
+}
+#searchInput{
+    margin-left: 20px;
+    padding: 10px 100px 10px 10px;
+    font-family: 'Open sans';
+    font-size: 14px;
+    border: 0;
+}
+#userBody{
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+}
+
+#userBody::-webkit-scrollbar{
+    width: 0;
+}
+
+
+#myContacts{
+    width: calc(100% - 40px);
+    height: calc(100% - 230px);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #E6EAEE;
+    overflow: hidden;
+    transition: .2s ease-in;
+}
+#myContactsHeader{
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    align-items: center;
+}
+#myContactsTitle{
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    font-family: 'Open sans';
+    font-size: 18px;
+    font-weight: 600;
+    color: #0F2744;
+}
+#myContactsBody{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+
+#contactsRequests{
+    width: calc(100% - 40px);
+    height: 100px;
+    border-radius: 8px;
+    border: 1px solid #E6EAEE;
+    overflow: hidden;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+#contactsRequestsHeader{
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    align-items: center;
+}
+#contactsRequestsTitle{
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    font-family: 'Open sans';
+    font-size: 18px;
+    font-weight: 600;
+    color: #0F2744;
+}
+#contactsRequestsBody{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+#viewer{
+    border-radius: 8px;
+    border: 1px solid #E6EAEE;
+    width: calc(100% - 20px);
+    height: calc(100% - 40px);
+    margin-top: 20px;
+    overflow: hidden;
+}
+#defaultView{
+    background-color: #E6EAEE;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open sans';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #0f2744bb;
+}
+#defaultViewTitle{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    margin-left: 50px;
+}
+#deafultViewText{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+    margin-top: 10px;
+    width: calc(100% - 600px);
+}
+
+#myContactsList{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.myContactsItem{
+    margin: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+.myContactsItem:hover{
+    background-color:#F5F6E9 ;
+}
+
+.userImg{
+    background-color: #0F2744;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Open sans';
+}
+
+.userInfoContainer{
+    margin-left: 10px;
+    height: 100%;
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 10px;
+}
+
+.userName{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+.userModels{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 14px;
+    font-weight: 400;
+    color: #728095;
+}
+
+#myContactsScream{
+    background-color: #f5f6e98a;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+#myContactsScreamContainer{
+    padding-left: 20px;
+    width: calc(100% - 70px);
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.setacontainer{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myContactsScreamTitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 15px;
+    font-weight: 600;
+    color: #728095;
+}
+
+#myContactsScreamText{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 13px;
+    font-weight: 400;
+    color: #728095;
+}
+
+#contactsRequestsList{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.contactsRequestsItem{
+    margin: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+.contactsRequestsItem:hover{
+    background-color: #F5F6E9;
+}
+
+
+#contactsRequestsScream{
+    background-color: #f5f6e98a;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+#contactsRequestsScreamContainer{
+    padding-left: 20px;
+    width: calc(100% - 70px);
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.setacontainer{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contactsRequestsScreamTitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 15px;
+    font-weight: 600;
+    color: #728095;
+}
+
+#contactsRequestsScreamText{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 13px;
+    font-weight: 400;
+    color: #728095;
+}
+
+#viewUser{
+    width: 100%;
+    height: 100%;
+}
+
+#viewUserHeader{
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #E6EAEE;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#viewUserImage{
+    background-color: #0F2744;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Open sans';
+    font-size: 20px;
+}
+#viewUserInfo{
+    height: 100%;
+    width: calc(100% - 500px);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+#viewUserName{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 20px;
+    font-weight: 600;
+    color: #0F2744;
+    margin-bottom: 5px;
+}
+#viewUserModelsText{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-weight: 400;
+    color: #728095;
+}
+#viewUserChoice{
+    height: 100%;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.btnChoice{
+    height: calc(100% - 40px);
+    width: 150px;
+    margin-right: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #7c8046;
+    color: #7c8046;
+    transition: .1s ease-in;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.btnChoice:hover{
+    background-color: #7c8046;
+    color: #fff;
+}
+
+#viewUserBody{
+    width: 100%;
+    height: calc(100% - 80px);
+}
+
+#viewUserDescriptionContainer{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#viewUserDescriptionContent{
+    border: 1px solid #E6EAEE;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    overflow: hidden;
+}
+#viewUserDescriptionContentHeader{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E6EAEE;
+}
+#viewUserDescriptionTitle{
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+}
+#viewUserDescriptionContentBody{
+    padding-top: 10px;
+    width: 100%;
+    height: calc(100% - 40px);
+}
+#viewUserDescriptionText{
+    margin: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 14px;
+    font-weight: 400;
+    color: #0F2744;
+}
+
+#viewUserModelsContainer{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#viewUserModelsContent{
+    border: 1px solid #E6EAEE;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    overflow: hidden;
+}
+#viewUserModelsContentHeader{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E6EAEE;
+}
+#viewUserDescriptionTitle{
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+}
+#viewUserModelsContentBody{
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+}
+#viewUserModelsContentBodyHeader{
+    background-color: #F5F6E9;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #E6EAEE;
+}  
+
+.viewUserModelsInfoContainer{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.viewUserModelsTitle{
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: #728095;
+}
+
+#viewUserModelsListContainer{
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+}
+#viewUserModelsListContainer::-webkit-scrollbar{
+    width: 0;
+}
+
+#viewUserModelsList{
+    margin: 0;
+    padding: 0;
+}
+
+.viewUserModelsItem{
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #E6EAEE;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    transition: .1s ease-in;
+}
+.viewUserModelsItem:hover{
+    background-color: #E6EAEE;
+}
+.viewUserModelsItemContainer{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.viewUserModelsItemText{
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 14px;
+    font-weight: 500;
+    color: #0F2744;
+}
+
+#viewUserContactsContainer{
+    width: 100% ;
+    height: calc(100% - 500px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewUserContactsContent{
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    padding: 20px ;
+}
+
+#viewUserContactsTitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 19px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+#viewUserContactsLinksContainer{
+    width: 100%;
+    height: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linkContainer{
+    border: 1px solid #E6EAEE;
+    border-radius: 4px;
+    width: 250px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    overflow: hidden;
+    transition: .1s ease-in;
+}
+.linkContainer:hover{
+    background-color: #F5F6E9;
+    border: 1px solid #E6EAEE;
+    width: 260px;
+    height: 70px;
+}
+
+.linkTitleContainer{
+    width: calc(100% - 60px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.linkTitle{
+    font-family: 'Open sans';
+    font-size: 20px;
+    font-weight: 600;
+    color: #728095;
+}
+.linkImgContainer{
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

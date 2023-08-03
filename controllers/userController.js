@@ -2,6 +2,8 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validate } = require('email-validator');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
 
 // ====================== Banco de Dados ===================================
 
@@ -17,7 +19,6 @@ AWS.config.update({
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const tablename = "Skirel";
-
 // ========================== Banco de Dados ===============================
 
 // ========================== Função para ADD novo usuário ==========================
@@ -56,7 +57,6 @@ async function addUser(name, email, password) {
         user.email = email;
         user.password = bcrypt.hashSync(password);
         user.foreingKey = bcrypt.hashSync(password + email + name);
-        user.models[0].file = Buffer.from('../../../Estudos_Desenvolvedor/Modelos_de_Predicao/Modelos/sklearnModel.joblib')
 
     const params = {
         TableName: tablename,
@@ -82,8 +82,8 @@ const userController = {
 
         if(userRegisted){
             const resp = {
-                succes: true,
-                message: 'USUÁRIO CADASTRADO COM SUCESSO. ',
+                success: true,
+                message: 'Usuário cadastrado com sucesso. ',
                 user:{
                     email:req.body.email,
                 }
@@ -92,8 +92,8 @@ const userController = {
             res.status(200).json(resp);
         }else{
             const resp = {
-                succes: false,
-                message: 'ERRO AO FAZER LOGIN. Email já foi cadastrado.',
+                success: false,
+                message: 'Erro ao fazer login. Email já foi cadastrado.',
                 user:{
                     email:req.body.email,
                 }
@@ -163,7 +163,214 @@ const userController = {
         }
 
         
-    }  
+    },
+    newPassword: async function(req, res){
+
+        const email = req.body.email
+
+        const params = {
+            TableName: tablename,
+            FilterExpression: 'email = :email',
+            ExpressionAttributeValues: {
+                ':email': email,
+                },
+            };
+    
+            const result = await dynamodb.scan(params).promise();
+    
+            if (result.Items.length == 0){
+    
+                const resp = {
+                    success: false,
+                    message: 'Email não cadastrado na plataforma.',
+                    user:{
+                        email: email
+                    }
+                }
+    
+                res.status(404).json(resp)
+        }else{
+            let transporter = nodemailer.createTransport({
+                service:'gmail',
+                auth:{
+                    user:process.env.EMAIL_USER,
+                    pass:process.env.EMAIL_PASS
+                }
+            })
+    
+            fs.readFile('../Skirel/views/forgotpassEmail.html', 'utf8' , (err , html) =>{
+                if(err){
+                    const resp = {
+                        success: false,
+                        message: 'Erro ao ler arquivo.',
+                        err:err
+                    }
+    
+                    res.status(400).json(resp)
+                }else{
+                    let mailOptions = {
+                        from: process.env.EMAIL_USER,
+                        to: req.body.email,
+                        subject: 'Skirel | Recuperação de acesso',
+                        html:html + `<a id="contentLink" href="http://localhost:3000/password?User=${email}">Recuperar senha</a>`
+                    }
+    
+                    transporter.sendMail(mailOptions , (error , info)=>{
+                        if(error){
+                            const resp = {
+                                success: false,
+                                message: 'Ocorreu erro no envio do email.',
+                                err:error
+                            }
+            
+                            res.status(400).json(resp)
+                        }else{
+                            const resp = {
+                                success: true,
+                                message: 'Email enviado com sucesso, verifique sua caixa de email.',
+                                info:info
+                            }
+                
+                            res.status(200).json(resp)
+                        }
+            
+                    })
+                }
+            })
+        }
+        
+        
+
+     
+       
+    },
+    changePassword: async function(req , res){
+        const email = req.body.email
+        const newPassword = bcrypt.hashSync(req.body.newPassword)
+
+        const params = {
+            TableName: tablename,
+            FilterExpression: 'email = :email',
+            ExpressionAttributeValues: {
+                ':email': email,
+                },
+        };
+        
+        const result = await dynamodb.scan(params).promise();
+
+        if (result.Items.length == 0){
+
+            const resp = {
+                success: false,
+                message: 'Email não encontrado na plataforma.',
+                user:{
+                    email: email
+                }
+            }
+
+            res.status(404).json(resp)
+        }else{
+            const user_id = result.Items[0].user_id;
+            const params = {
+                TableName: tablename,
+                Key:{
+                    user_id:user_id
+                },
+                UpdateExpression: 'set #pwd = :value',
+                ExpressionAttributeNames: {
+                  '#pwd': 'password', // Nome do atributo da senha
+                },
+                ExpressionAttributeValues: {
+                  ':value': newPassword, // Valor da nova senha
+                },
+                ReturnValues: 'UPDATED_NEW',
+            }
+
+            dynamodb.update(params, (err , result)=>{
+                if(err){
+                    const resp = {
+                        success: false,
+                        message: 'Email não encontrado na plataforma.',
+                        error: err
+                    }
+
+                    res.status(400).json(resp)
+                }else{
+                    const resp = {
+                        success: true,
+                        message: 'Senha alterada com sucesso.',
+                        result: result
+                    }
+                    res.status(200).json(resp)
+                }
+            })
+        }
+    
+    },
+    newModel: async function(req,res){
+        const email = req.body.email;
+
+        const params = {
+            TableName: tablename,
+            FilterExpression: 'email = :email',
+            ExpressionAttributeValues: {
+                ':email': email,
+                },
+        };
+        
+        const results = await dynamodb.scan(params).promise();
+
+        if (results.Items.length == 0){
+
+            const resp = {
+                success: false,
+                message: 'Error ao cadastrar novo modelo, realizar nova importação.',
+                user:{
+                    email: email
+                }
+            }
+
+            res.status(404).json(resp)
+        }else{
+            const user_id = results.Items[0].user_id;
+            const params = {
+                TableName: tablename,
+                Key:{
+                    user_id:user_id
+                },
+                UpdateExpression: 'set models = list_append(if_not_exists(models, :empty_list), :new_object)',
+                ExpressionAttributeValues: {
+                    ':new_object': [{
+                        name: req.body.model.name,
+                        description: req.body.model.description,
+                        framework: req.body.model.framework,
+                        acessos: req.body.model.acessos,
+                        file: req.body.model.file
+                    }],
+                    ':empty_list': []
+                  },
+                ReturnValues: 'UPDATED_NEW',
+            }
+
+            dynamodb.update(params, (err, result)=>{
+                if(err){
+                    const resp = {
+                        success: false,
+                        message: 'Novo modelo adicionado.',
+                        result: result
+                    }
+                    res.status(400).json(resp)
+                }else{
+                    const resp = {
+                        success: true,
+                        message: 'Novo modelo adicionado.',
+                        result: result
+                    }
+                    res.status(200).json(resp)
+                }
+            })
+        }
+    }
 }
 
 module.exports = userController;

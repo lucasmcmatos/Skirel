@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="styles/loggedcommunity.css"> 
+<link rel="stylesheet" type="text/css" href="styles/partialsStyles/loggedcommunity.css"> 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -10,4 +10,190 @@
             <h1 id="titleHome">Comunidade</h1>
         </div>
     </div>
+
+    <div id="content">
+        <div id="searchersConteiner">
+            <div id="users"  onclick="seachFocous()">
+                <div id="userHeader">
+                    <img src="images/searchIcon.svg" width="25px">
+                    <input type="text" placeholder="Nome do pesquisador" id="searchInput">
+                </div>
+                <div id="userBody">
+                    
+                </div>
+            </div>
+            <div id="myContacts"  onclick="myContactsFocous()">
+                <div id="myContactsHeader">
+                    <h1 id="myContactsTitle">Meus Contatos</h1>
+                </div>
+                <div id="myContactsBody">
+                    <ul id="myContactsList">
+                        <li class="myContactsItem">
+                            <div class="userImg">
+                                P
+                            </div>
+                            <div class="userInfoContainer">
+                                <h1 class="userName">Lucas Matos</h1>
+                                <p class="userModels">10 modelos</p>
+                            </div>
+                        </li>
+                        <li class="myContactsItem">
+                            <div class="userImg">
+                                P
+                            </div>
+                            <div class="userInfoContainer">
+                                <h1 class="userName">Lucas Matos</h1>
+                                <p class="userModels">10 modelos</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contactsRequests" onclick="contactsRequestFocous()">
+                <div id="contactsRequestsHeader">
+                    <h1 id="contactsRequestsTitle">Solicitações de contato</h1>
+                </div>
+                <div id="contactsRequestsBody">
+
+                    <div id="contactsRequestsScream">
+                        <div id="contactsRequestsScreamContainer">
+                            <h1 id="contactsRequestsScreamTitle">Lucas Martins Campos Matos</h1>
+                            <p id="contactsRequestsScreamText">10+ Solicitações de contato</p>
+                        </div>
+                        <div class="setacontainer">
+                            <img src="images/setaDireita.svg" width="20px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="viewerContainer">
+            <div id="viewer">
+                <div id="viewUser">
+                    <div id="viewUserHeader">
+                        <div id="viewUserImage">
+                            P
+                        </div>
+                        <div id="viewUserInfo">
+                            <h1 id="viewUserName">Pedro Alves</h1>
+                            <p id="viewUserModelsText">10 modelos</p>
+                        </div>
+                        <div id="viewUserChoice">
+                            <!-- <button class="btnChoice">Aceitar</button>
+                            <button class="btnChoice">Recusar</button> -->
+                            <!-- <button class="btnChoice">Solicitar contato</button> -->
+                            <button class="btnChoice">Remover notworking</button>
+                        </div>
+                    </div>
+                    <div id="viewUserBody">
+                        <div id="viewUserDescriptionContainer">
+                            <div id="viewUserDescriptionContent">
+                                <div id="viewUserDescriptionContentHeader">
+                                    <h1 id="viewUserDescriptionTitle">Biografía do usuário</h1>
+                                </div>
+                                <div id="viewUserDescriptionContentBody">
+                                    <p id="viewUserDescriptionText">Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum Loren ipslum </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div id="viewUserModelsContainer">
+                            <div id="viewUserModelsContent">
+                                <div id="viewUserModelsContentHeader">
+                                    <h1 id="viewUserDescriptionTitle">Modelos do usuário</h1>
+                                </div>
+                                <div id="viewUserModelsContentBody">
+                                    <div id="viewUserModelsContentBodyHeader">
+                                        <div class="viewUserModelsInfoContainer">
+                                            <h1 class="viewUserModelsTitle">Nome</h1>
+                                        </div>
+                                        <div class="viewUserModelsInfoContainer">
+                                            <h1 class="viewUserModelsTitle">Descrição</h1>
+                                        </div>
+                                        <div class="viewUserModelsInfoContainer">
+                                            <h1 class="viewUserModelsTitle">Framework</h1>
+                                        </div>
+                                        <div class="viewUserModelsInfoContainer">
+                                            <h1 class="viewUserModelsTitle">Acessos</h1>
+                                        </div>
+                                    </div>
+                                    <div id="viewUserModelsListContainer">
+                                        <ul id="viewUserModelsList">
+                                            <li class="viewUserModelsItem">
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">Nome teste</h1>
+                                                </div>
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">Descrição Teste</h1>
+                                                </div>
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">Framework teste</h1>
+                                                </div>
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">14</h1>
+                                                </div>
+                                            </li>
+                                            <li class="viewUserModelsItem">
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">Nome teste</h1>
+                                                </div>
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">Descrição Teste</h1>
+                                                </div>
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">Framework teste</h1>
+                                                </div>
+                                                <div class="viewUserModelsItemContainer">
+                                                    <h1 class="viewUserModelsItemText">14</h1>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="viewUserContactsContainer">
+                            <div id="viewUserContactsContent">
+                                <h1 id="viewUserContactsTitle">Contatos</h1>
+                                <div id="viewUserContactsLinksContainer">
+                                    <a href="#" class="linkContainer">
+                                        <div class="linkTitleContainer">
+                                            <h1 class="linkTitle">Instagram</h1>
+                                        </div>
+                                        <div class="linkImgContainer">
+                                            <img src="images/instaIcon.svg" width="40px"> 
+                                        </div>
+                                    </a>
+                                    <a href="#" class="linkContainer">
+                                        <div class="linkTitleContainer">
+                                            <h1 class="linkTitle">Linkedin</h1>
+                                        </div>
+                                        <div class="linkImgContainer">
+                                            <img src="images/linkedinIcon.svg" width="40px"> 
+                                        </div>
+                                    </a>
+                                    <a href="#" class="linkContainer">
+                                        <div class="linkTitleContainer">
+                                            <h1 class="linkTitle">Whatsapp</h1>
+                                        </div>
+                                        <div class="linkImgContainer">
+                                            <img src="images/wppIcon.svg" width="40px"> 
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div id="defaultView">
+                    <h1 id="defaultViewTitle">Selecione um usuário</h1>
+                    <p id="deafultViewText">Escolha um usuário qualquer, seja ele do seu networking, solicitante de contato ou um usuário qualquer da plataforma.</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="scripts/partialsScripts/loggedcommunity.js"></script>
