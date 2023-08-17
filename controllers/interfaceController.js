@@ -70,9 +70,32 @@ const interfaceController = {
 
             res.status(401).json(resp)
         }
+    },
+    allUsers: function(req, res){
+        const params = {
+            TableName: tablename
+        };
 
-    
+        dynamodb.scan(params,(err,data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    message: 'Erro em buscar usuários.',
+                    error: err
+                }
 
+                res.status(400).json(resp)
+            }else{
+                
+                const resp = {
+                    success: true,
+                    message: 'Usuários encontrados com sucesso.',
+                    data:data
+                }
+
+                res.status(200).json(resp)
+            }
+        })
     }
 }
 

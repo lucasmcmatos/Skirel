@@ -1,3 +1,4 @@
+// Node configs ===============================================================
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -5,24 +6,20 @@ const { validate } = require('email-validator');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 
-// ====================== Banco de Dados ===================================
-
+// Database configs ===========================================================
 const AWS = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
 const { param } = require('../routes/userRouter');
-
 AWS.config.update({
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
     region: 'us-east-2'
 });
-
+const s3 = new AWS.S3();
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const tablename = "Skirel";
-// ========================== Banco de Dados ===============================
 
-// ========================== Função para ADD novo usuário ==========================
-
+// Route's functions ===========================================================
 async function checkEmailExiss(email){
     const params = {
         TableName: tablename,
@@ -73,7 +70,7 @@ async function addUser(name, email, password) {
 
 }
 
-// ========================== Função para ADD novo usuário ==========================
+// Route's structures =========================================================
 
 const userController = {
     register: async function (req , res){
@@ -237,11 +234,7 @@ const userController = {
                     })
                 }
             })
-        }
-        
-        
-
-     
+        }  
        
     },
     changePassword: async function(req , res){
@@ -307,70 +300,101 @@ const userController = {
         }
     
     },
-    newModel: async function(req,res){
-        const email = req.body.email;
+    uploadfile: async function(req , res){
+        let file = req.file;
+        let modelname = req.body.modelname;
+        let modeldescription = req.body.modeldescription;
+        let modelframework = req.body.modelframework;
+        let user_id = req.body.user_id
 
         const params = {
-            TableName: tablename,
-            FilterExpression: 'email = :email',
-            ExpressionAttributeValues: {
-                ':email': email,
-                },
-        };
-        
-        const results = await dynamodb.scan(params).promise();
-
-        if (results.Items.length == 0){
-
-            const resp = {
-                success: false,
-                message: 'Error ao cadastrar novo modelo, realizar nova importação.',
-                user:{
-                    email: email
-                }
-            }
-
-            res.status(404).json(resp)
-        }else{
-            const user_id = results.Items[0].user_id;
-            const params = {
-                TableName: tablename,
-                Key:{
-                    user_id:user_id
-                },
-                UpdateExpression: 'set models = list_append(if_not_exists(models, :empty_list), :new_object)',
-                ExpressionAttributeValues: {
-                    ':new_object': [{
-                        name: req.body.model.name,
-                        description: req.body.model.description,
-                        framework: req.body.model.framework,
-                        acessos: req.body.model.acessos,
-                        file: req.body.model.file
-                    }],
-                    ':empty_list': []
-                  },
-                ReturnValues: 'UPDATED_NEW',
-            }
-
-            dynamodb.update(params, (err, result)=>{
-                if(err){
-                    const resp = {
-                        success: false,
-                        message: 'Novo modelo adicionado.',
-                        result: result
-                    }
-                    res.status(400).json(resp)
-                }else{
-                    const resp = {
-                        success: true,
-                        message: 'Novo modelo adicionado.',
-                        result: result
-                    }
-                    res.status(200).json(resp)
-                }
-            })
+            Bucket: 'skirel',
+            Key: modelname,
+            Body: file.buffer,
+            ContentType: file.mimetype,
         }
+
+        s3.upload(params , (err, data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error:err.message,
+                    message: 'Erro interno da plataforma, entrar em contato com suporte.'
+                }
+                return res.status(500).json(resp)
+            }else{
+                const getParams = {
+                    TableName: tablename,
+                    Key:{
+                        'user_id':user_id
+                    }
+                }
+
+                const seURL = data.Location
+
+                dynamodb.get(getParams, (err , data)=>{
+                    if(err){
+                        const resp = {
+                            success: false,
+                            error: err.message,
+                            message: 'Usuario nao encontrado na plataforma.'
+                        }
+                        return res.status(500).json(resp)
+                    }else{
+
+                        for(i=0; i<data.Item.models.length ; i++){
+                            if( toUpperCase(data.Item.models[0].name) == toUpperCase(modelname) ){
+                                const resp = {
+                                    success: false,
+                                    error:err.message,
+                                    message: 'Usuario ja possui um modelo com esse nome.' 
+                                }
+                                return res.status(500).json(resp)
+                            }
+                        }
+                        let models = data.Item.models || []
+                        models.push({
+                            name: modelname,
+                            description: modeldescription,
+                            framework: modelframework,
+                            s3URL: seURL, 
+                            acessos: 0
+                        })
+
+                        const updateParams = {
+                            TableName: tablename,
+                            Key:{
+                                'user_id':user_id
+                            },
+                            UpdateExpression: 'set models = :m',
+                            ExpressionAttributeValues:{
+                                ':m': models
+                            }
+                        }
+
+                        dynamodb.update(updateParams, (err , data)=>{
+                            if(err){
+                                const resp = {
+                                    success: false,
+                                    error:err.message,
+                                    message: 'Erro ao adicionar um novo modelo' 
+                                }
+                                return res.status(500).json(resp)
+                            }else{
+                                const resp = {
+                                    success: true,
+                                    message: 'Modelo adicionado com sucesso.',
+                                    data:data
+                                }
+                                return res.status(200).json(resp)
+                            }
+                        })
+                    }
+                })
+            }
+        })
     }
+    
 }
 
 module.exports = userController;

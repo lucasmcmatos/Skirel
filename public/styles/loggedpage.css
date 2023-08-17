@@ -252,6 +252,7 @@ ul{
 #workspaceicon{
     width: 18px;
     margin-right: 17px;
+    transform: translateY(1px);
 }
 
 #navButtonWorkspace{

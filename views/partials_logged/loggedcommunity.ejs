@@ -16,60 +16,69 @@
             <div id="users"  onclick="seachFocous()">
                 <div id="userHeader">
                     <img src="images/searchIcon.svg" width="25px">
-                    <input type="text" placeholder="Nome do pesquisador" id="searchInput">
+                    <input type="text" onkeyup="searchUser()" placeholder="Nome do pesquisador" id="searchInput">
                 </div>
                 <div id="userBody">
-                    
+                    <ul id="usersList"></ul>
                 </div>
             </div>
             <div id="myContacts"  onclick="myContactsFocous()">
                 <div id="myContactsHeader">
                     <h1 id="myContactsTitle">Meus Contatos</h1>
                 </div>
-                <div id="myContactsBody">
-                    <ul id="myContactsList">
-                        <li class="myContactsItem">
-                            <div class="userImg">
-                                P
-                            </div>
-                            <div class="userInfoContainer">
-                                <h1 class="userName">Lucas Matos</h1>
-                                <p class="userModels">10 modelos</p>
-                            </div>
-                        </li>
-                        <li class="myContactsItem">
-                            <div class="userImg">
-                                P
-                            </div>
-                            <div class="userInfoContainer">
-                                <h1 class="userName">Lucas Matos</h1>
-                                <p class="userModels">10 modelos</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <div id="myContactsBody"></div>
             </div>
             <div id="contactsRequests" onclick="contactsRequestFocous()">
                 <div id="contactsRequestsHeader">
                     <h1 id="contactsRequestsTitle">Solicitações de contato</h1>
                 </div>
-                <div id="contactsRequestsBody">
-
-                    <div id="contactsRequestsScream">
-                        <div id="contactsRequestsScreamContainer">
-                            <h1 id="contactsRequestsScreamTitle">Lucas Martins Campos Matos</h1>
-                            <p id="contactsRequestsScreamText">10+ Solicitações de contato</p>
-                        </div>
-                        <div class="setacontainer">
-                            <img src="images/setaDireita.svg" width="20px">
-                        </div>
-                    </div>
-                </div>
+                <div id="contactsRequestsBody"></div>
             </div>
         </div>
         <div id="viewerContainer">
             <div id="viewer">
-                <div id="viewUser">
+                
+                <!-- <div id="viewerUserModel">
+                    <div id="viewerUserModelContainer">
+                        <div id="viewerUserModelContainerHeader">
+                            <h1 id="viewerUserModelContainerTitle">Informações do modelo</h1>
+                            <img id="closeIcon" src="images/closeIcon.svg" width="16px">
+                        </div>
+                        <div id="viewerUserModelContainerBody">
+                            <div class="modelInfoContainer">
+                                <h1 id="modelName">Nome do modelo</h1>
+                            </div>
+                            <div class="modelInfoContainer">
+                                <h1 class="modelInfoTitle">Descrição do modelo</h1>
+                                <div class="infoContainer">
+
+                                </div>
+                            </div>
+                            <div class="modelInfoContainer">
+                                <h1 class="modelInfoTitle">Framework do modelo</h1>
+                                <div class="infoContainer">
+                                    
+                                </div>
+                            </div>
+                            <div class="modelInfoContainer">
+                                <h1 class="modelInfoTitle">Acessos</h1>
+                                <div class="infoContainer">
+                                    
+                                </div>
+                            </div>
+                            <div class="modelInfoContainer">
+                                <div class="infoContainer" id="downloadButtonContainer">
+                                    <button class="downloadButton"><img class="image" src="images/uploadImage.svg" width="18px">Download do arquivo</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="viewerUserModelContainerFooter">
+                            <button class="viewerButton">Usar</button>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div id="viewUser">
                     <div id="viewUserHeader">
                         <div id="viewUserImage">
                             P
@@ -79,10 +88,10 @@
                             <p id="viewUserModelsText">10 modelos</p>
                         </div>
                         <div id="viewUserChoice">
-                            <!-- <button class="btnChoice">Aceitar</button>
-                            <button class="btnChoice">Recusar</button> -->
-                            <!-- <button class="btnChoice">Solicitar contato</button> -->
-                            <button class="btnChoice">Remover notworking</button>
+                            <button class="btnChoice">Aceitar</button>
+                             <button class="btnChoice" id="recusarChoice">Recusar</button> 
+                             <button class="btnChoice" id='Contact'>Solicitar contato <img src="images/plusIcon.svg" width="20px"></button> 
+                            <button class="btnChoice" id="removerChoice">Remover notworking <img src="images/deleteIcon.svg" width="19px"></button>
                         </div>
                     </div>
                     <div id="viewUserBody">
@@ -132,6 +141,7 @@
                                                 <div class="viewUserModelsItemContainer">
                                                     <h1 class="viewUserModelsItemText">14</h1>
                                                 </div>
+                                                <div class="selectorModels"></div>
                                             </li>
                                             <li class="viewUserModelsItem">
                                                 <div class="viewUserModelsItemContainer">
@@ -146,6 +156,7 @@
                                                 <div class="viewUserModelsItemContainer">
                                                     <h1 class="viewUserModelsItemText">14</h1>
                                                 </div>
+                                                <div class="selectorModels"></div>
                                             </li>
                                         </ul>
                                     </div>
@@ -185,12 +196,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- <div id="defaultView">
+                    
+                </div> -->
+
+                <div id="defaultView">
                     <h1 id="defaultViewTitle">Selecione um usuário</h1>
                     <p id="deafultViewText">Escolha um usuário qualquer, seja ele do seu networking, solicitante de contato ou um usuário qualquer da plataforma.</p>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

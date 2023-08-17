@@ -64,12 +64,12 @@
 #viewerContainer{
     width: 70%;
     height: 100%;
+    overflow: hidden;
 }
 
 #users{
-    width: calc(100% - 40px);
-    /* height: calc(100% - 380px); */
-    height: 50px;
+    width: calc(100% - 60px);
+    height: calc(100% - 280px);
     margin-bottom: 20px;
     border-radius: 8px;
     border: 1px solid #E6EAEE;
@@ -104,13 +104,14 @@
 
 
 #myContacts{
-    width: calc(100% - 40px);
-    height: calc(100% - 230px);
+    width: calc(100% - 60px);
+    height: 100px;
     margin-bottom: 20px;
     border-radius: 8px;
     border: 1px solid #E6EAEE;
     overflow: hidden;
     transition: .2s ease-in;
+    cursor: pointer;
 }
 #myContactsHeader{
     height: 50px;
@@ -135,7 +136,7 @@
 
 
 #contactsRequests{
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
     height: 100px;
     border-radius: 8px;
     border: 1px solid #E6EAEE;
@@ -327,7 +328,6 @@
 
 
 #contactsRequestsScream{
-    background-color: #f5f6e98a;
     width: 100%;
     height: 50px;
     display: flex;
@@ -431,20 +431,51 @@
 }
 .btnChoice{
     height: calc(100% - 40px);
-    width: 150px;
+    width: 170px;
     margin-right: 20px;
     background-color: #fff;
     border-radius: 4px;
     border: 1px solid #7c8046;
+    background-color: #fff;
     color: #7c8046;
     transition: .1s ease-in;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .btnChoice:hover{
     background-color: #7c8046;
     color: #fff;
+}
+
+#Contact{
+    background-color: #7c8046;
+    color: #fff;
+}
+#Contact:hover{
+    height: calc(100% - 35px);
+}
+
+#removerChoice{
+    width: 200px;
+    background-color: #7c8046;
+    color: #fff;
+}
+#removerChoice:hover{
+    height: calc(100% - 35px);
+}
+#recusarChoice{
+    color: #7c8046;
+    border: 1px solid #7c8046;
+    background-color: #fff;
+}
+#recusarChoice:hover{
+    color: #fff;
+    border: 1px solid red;
+    background-color: red  ;
 }
 
 #viewUserBody{
@@ -633,7 +664,7 @@
     height: calc(100% - 20px);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -674,4 +705,203 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.selector{
+    position: absolute;
+    width: 448px;
+    height: 57px;
+}
+.selectorModels{
+    position: absolute;
+    width: calc(70% - 60px);
+    height: 40px;
+}
+
+#viewerUserModel{
+    background-color: #00000023;
+    position: absolute;
+    width: calc(100% - 31%);
+    height: calc(100% - 14%);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#viewerUserModelContainer{
+    background-color: #fff;
+    border-radius: 8px;
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+}
+
+#viewerUserModelContainerHeader{
+    border-bottom: 1px solid #E6EAEE;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#viewerUserModelContainerTitle{
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+}
+
+#closeIcon{
+    margin-right: 10px;
+    padding: 5px;
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+#closeIcon:hover{
+    background-color: rgba(255, 0, 0, 0.342);
+    border-radius: 4px;
+
+}
+
+#viewerUserModelContainerBody{
+    width: 100%;
+    height: calc(100% - 80px);
+}
+
+.modelInfoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+}
+
+#modelName{
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #7c8046;
+    font-family: 'Open sans';
+}
+
+.modelInfoTitle{
+    
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F2744;
+    font-family: 'Open sans';
+}
+
+.infoContainer{
+    border: 1px solid #E6EAEE;
+    border-radius: 4px;
+    width: calc(100% - 60px);
+    margin-left: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #0F2744;
+    font-family: 'Open sans';
+}
+
+#downloadButtonContainer{
+    padding: 0;
+    width: calc(100% - 40px);
+    height: 40px;
+}
+.downloadButton{
+    width: 100%;
+    height: 100%;
+    font-family: 'Open sans';
+    font-weight: 500;
+    border: 1px solid #7c8046;
+    background-color: #7c8046;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image{
+    margin-right: 10px;
+}
+
+#viewerUserModelContainerFooter{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+}
+.viewerButton{
+    border: 1px solid #7c8046;
+    background-color: #fff;
+    color: #7c8046;
+    height: 25px;
+    width: 50px;
+    border-radius: 4px;
+    font-family: 'Open sans';
+    margin-right: 20px;
+    transition: .1s ease-in;
+}
+.viewerButton:hover{
+    background-color: #7c8046;
+    color: #fff;
+}
+
+#usersList{
+    margin: 0;
+    padding: 0;
+}
+
+.userListIten{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 60px;
+    transition: .1s ease-in;
+}
+
+.userListIten:hover{
+    background-color: #F5F6E9;
+}
+
+.emailContainer{
+    width: calc(100% - 600px);
+    height: calc(100% - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #E6EAEE;
+}
+
+.emaiTitle{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-family: 600;
+}
+
+.emailText{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 16px;
+    font-family: 400;
 }

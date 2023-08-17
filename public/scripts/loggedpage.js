@@ -1,4 +1,5 @@
 const token = localStorage.getItem('authorization-token');
+const user_email = localStorage.getItem('user-email');
 
 if(!token){
     window.location.href = 'http://localhost:3000/Login'
@@ -17,6 +18,38 @@ if(!token){
     })
 }
 
+fetch('/allUsers', {
+    method: 'GET',
+    headers: {
+        'Content-Type':'application/json'
+    }
+})
+.then(res=>res.json())
+.then( data=>{
+    if(!data.success){
+        alert(data.message + 'Volte para o login, e tente entrar novamente.')
+    }else{
+        const skirel_users = data.data.Items
+        localStorage.setItem('Skirel_users', JSON.stringify(skirel_users))
+    }
+})
+
+fetch('/data/'+ user_email, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+        },
+})
+.then(res => res.json())
+.then(data =>{
+    const user = JSON.stringify(data.user)
+
+    if(!data.success){
+        alert(data.message + 'Faça o login novamente.')
+    }else{
+        localStorage.setItem('usuario', user)
+    }
+})
 
 function showNotifications(){
     document.getElementById('notificationsContent').style.display = 'flex';
