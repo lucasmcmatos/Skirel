@@ -13,6 +13,14 @@
     <title>Skirel</title>
 </head>
 <body>
+
+    <div id="loader"><div class="loader">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div></div>
+
     <div id="container">
         <%if(query == "Home"){%>
             <%- include('partials_logged/loggedhome') -%>
@@ -22,7 +30,10 @@
             <%- include('partials_logged/loggedcommunity') -%>
         <%} else if(query == "Perfil"){%>
             <%- include('partials_logged/loggedprofile') -%>
+        <%} else if(query == "Use"){%>
+            <%- include('partials_logged/loggedworkspace') -%>
         <%}%>
+        
     </div>
 
     <!-- Statics -->
@@ -34,6 +45,7 @@
         <div id="navbarContainer">
             <div id="navbar">
                 <ul>
+                    
                     <li>
                         <%if(query == "Home"){%>
                             <a href="http://localhost:3000/Welcome?View=Home" class="navButtonsSelected"> <img id="homeicon" src="images/NavbarIcons/homeIconSelected.svg"> Home</a>
@@ -63,6 +75,17 @@
                         <%}%>
 
                     </li>
+                    <hr class="workspace">
+                    <li>
+                        <%if(query == "Use"){%>
+                            <a href="http://localhost:3000/Welcome?View=Use" class="navButtonsSelected"> <img id="workspaceicon" src="images/NavbarIcons/workspaceSelected.svg" width="18px"> Workspace</a>
+                        <%}else{%>
+                            <a href="http://localhost:3000/Welcome?View=Use" class="navButtons"> <img id="workspaceicon" src="images/NavbarIcons/workspaceUnselected.svg"  width="18px"> Workspace</a>
+                        <%}%>
+
+                    </li>
+                    
+                    
                 </ul>
             </div>
             <div id="logoutContainer">
@@ -71,12 +94,10 @@
         </div>
     </div>
     <div id="header">
-        <div onclick="showNotifications()" id="notificationsContainer">
-            <a href="#"><img id="notificationsImg" src="images/NavbarIcons/notificationsIcon.svg"></a>
-        </div>
+        
     </div>
 
-    <div id="notificationsContent">
+    <!-- <div id="notificationsContent">
         <div id="notificationsHeader">
             <h1 id="notificationsTitle">Notificações</h1>
         </div>
@@ -95,7 +116,7 @@
             </ul>
         </div>
 
-    </div>
+    </div> -->
     <!-- Statics -->
 
     <script src="scripts/loggedpage.js"></script>

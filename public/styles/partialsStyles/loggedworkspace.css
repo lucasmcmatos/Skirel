@@ -1,0 +1,360 @@
+#bodyContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+
+#containerBoxNew{
+    width: calc(100% - 60px);
+    height: calc(100% - 40px) ;
+    overflow-y: scroll;
+}::-webkit-scrollbar{
+    width: 0;
+}
+
+#titleContainer{
+    width: 100%;
+    height: 50px;
+}
+
+.subtitlecontent{
+    margin: 0;
+    padding-left: 10px;
+    display: none;
+}
+
+.subtitlecontent1{
+    margin: 0;
+    padding-left: 10px;
+}
+
+#subtile{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'Open Sans';
+    color: #728095;
+    font-weight: 600;
+}
+
+.subtitle2{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-family: 'Open Sans';
+    color: #728095;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.titleHome{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-family: 'Open Sans';
+    color: #0F2744;
+    font-weight: 600;
+}
+
+.titleHome2{
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-family: 'Open Sans';
+    color: #7C8046;
+    font-weight: 600;
+}
+
+#content{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+#containercontentinfos{
+    width: calc(100% - 40px);
+    padding: 20px;
+}
+
+#limitationscontainer{
+    margin-top: 10px;
+    border: 1px solid #E6EAEE;
+    width: calc(100% - 80px);
+    padding: 20px;
+    background-color: #F5F6E9;
+    cursor: pointer;
+    transition: 1s ease-in;
+}
+
+#howtousecontainer{
+    margin-top: 10px;
+    border: 1px solid #E6EAEE;
+    width: calc(100% - 80px);
+    padding: 20px;
+    background-color: #F5F6E9;
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+#containerrunner{
+    width: calc(100% - 40px);
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerModels{
+    border: 1px solid #E6EAEE;
+    border-radius: 8px;
+    height: calc(100% - 40px);
+    width: calc(50% - 40px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+}
+
+.bodyContainerModels{
+    margin-top: 20px;
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#uploadData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.inputfile{
+    background-color: red;
+    position: absolute;
+
+}
+
+.uploadContainer{
+    border-radius: 4px;
+    border: 1px solid #E6EAEE;
+    width: calc(100% - 40px) ;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.btnWarning{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 14px;
+    color: #0F2744;
+    border: 0;
+    background-color: #7C8046;
+    color: #fff;  
+    overflow: hidden;
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+.btnWarning:hover{
+    background-color: #5c5f34;
+    color: #fff;  
+}
+
+.btnWarning input[type="file"]{
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    
+    /* opacity: 0; */
+}
+
+::-webkit-file-upload-button{
+    opacity: 0;
+    width: 300px;
+    height: 100%;
+    cursor: pointer;
+    font-family: 'Open Sans';
+}
+
+.btnWarningImg{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.modelSubmit{
+    background-color: #F5F6E9;
+    width: 200px;
+    height: 30px;
+    border:1px solid #7C8046;
+    color: #7C8046;
+    border-radius: 4px;
+    transition: .1s ease-in;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open sans';
+    text-decoration: none;
+}
+
+.modelSubmit:hover{
+    background-color: #7C8046;
+    color: #fff;
+}
+
+.modelSubmit:disabled{
+    background-color: #E6EAEE;
+    color: #728095;
+    border: 1px solid #728095;
+}
+
+.listheader{
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    
+    border: 1px solid #7C8046;
+}
+
+.listContainer{
+    border-radius:0 0 4px 4px;
+    border: 1px solid #E6EAEE;
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: scroll;
+}
+
+.titleModels{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-family: 'Open Sans';
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    background-color: #7C8046;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+}
+
+#modelsDataList{
+    margin: 0;
+    padding: 0;
+}
+
+.containerItem{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #E6EAEE;
+    overflow: hidden;
+    transition: .1s ease-in;
+}
+
+.contentLinks{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+}
+
+.containermodel{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: .1s ease-in;
+    color: #0F2744;
+}
+
+.containermodel:hover{
+    background-color: #F5F6E9;
+}
+
+.modellink{
+    width: 50%;
+    height: 100%;
+    text-decoration: none;
+    font-family: 'Open sans';
+    color: #0F2744;
+}
+
+.modellink:visited{
+    color: #0F2744;
+}
+
+.containerdataset{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: .1s ease-in;
+}
+.containerdataset:hover{
+    background-color: #F5F6E9;
+}
+
+.datasetlink{
+    width: 50%;
+    height: 100%;
+    font-family: 'Open sans';
+    text-decoration: none;
+    color: #0F2744;
+}:visited{
+    color: #0F2744;
+}
+
+.popup{
+    background-color: #F5F6E9;
+    width: calc(100% - 40px);
+    font-family: 'Open sans';
+    color: #0F2744;
+    font-size: 14px;
+    height: 0;
+    transition: .1s ease-in;
+}
+
+.navButtons{
+    color: #ABB8CA;
+}
+
+.navButtonsSelected{
+    color: #7C8046;
+}

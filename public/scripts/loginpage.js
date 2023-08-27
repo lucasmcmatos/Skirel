@@ -1,3 +1,4 @@
+localStorage.removeItem('paginaRecarregada')
 
 document.getElementById('loginForm').addEventListener('submit', (event) =>{
     event.preventDefault();

@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const { validate } = require('email-validator');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
+var i;
+var j;
 
 // Database configs ===========================================================
 const AWS = require('aws-sdk');
@@ -307,9 +309,11 @@ const userController = {
         let modelframework = req.body.modelframework;
         let user_id = req.body.user_id
 
+        let s3Key = `${user_id}/${modelname}`
+
         const params = {
             Bucket: 'skirel',
-            Key: modelname,
+            Key: s3Key,
             Body: file.buffer,
             ContentType: file.mimetype,
         }
@@ -318,7 +322,7 @@ const userController = {
             if(err){
                 const resp = {
                     success: false,
-                    error:err.message,
+                    error:err,
                     message: 'Erro interno da plataforma, entrar em contato com suporte.'
                 }
                 return res.status(500).json(resp)
@@ -336,17 +340,17 @@ const userController = {
                     if(err){
                         const resp = {
                             success: false,
-                            error: err.message,
+                            error: err,
                             message: 'Usuario nao encontrado na plataforma.'
                         }
                         return res.status(500).json(resp)
                     }else{
-
+                        
                         for(i=0; i<data.Item.models.length ; i++){
-                            if( toUpperCase(data.Item.models[0].name) == toUpperCase(modelname) ){
+                            if( data.Item.models[i].name.toUpperCase() == modelname.toUpperCase() ){
                                 const resp = {
                                     success: false,
-                                    error:err.message,
+                                    error:err,
                                     message: 'Usuario ja possui um modelo com esse nome.' 
                                 }
                                 return res.status(500).json(resp)
@@ -376,7 +380,7 @@ const userController = {
                             if(err){
                                 const resp = {
                                     success: false,
-                                    error:err.message,
+                                    error:err,
                                     message: 'Erro ao adicionar um novo modelo' 
                                 }
                                 return res.status(500).json(resp)
@@ -393,8 +397,610 @@ const userController = {
                 })
             }
         })
+    },
+    requestContact: async function(req, res){
+        const myuser_id = req.body.myuser_id; // ID do usuário que está fazendo a solicitação
+        const targetuserId = req.body.targetuser_id;
+        
+        const myuserparams = {
+            TableName: tablename,
+            Key: {
+                'user_id': myuser_id
+            }
+        }
+
+        dynamodb.get(myuserparams , (err , data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error: err,
+                    message: 'Erro interno da plataforma.'
+                }
+                res.status(400).json(resp)
+
+            }else{
+                const myuser = data.Item
+
+                const request = {
+                    targetuser_id: myuser_id,
+                    targetuser_name: myuser.name,
+                    targetuser_bio: myuser.bio,
+                    targetuser_models: myuser.models,
+                    targetuser_email: myuser.email,
+                    targetuser_contacts:myuser.contacts,
+                    targetuser_bio:myuser.bio,
+                    whodidit:'me',
+                    status: 'pending'
+                }
+
+                const requestparams = {
+                    TableName: tablename,
+                    Key: {
+                        'user_id': targetuserId
+                    },
+                    UpdateExpression: "SET solicitacoes = list_append(if_not_exists(solicitacoes, :emptyList), :newRequest)",
+                    ExpressionAttributeValues: {
+                        ':newRequest': [request],
+                        ':emptyList': [] // garante que a lista exista
+                    },
+                    ReturnValues: 'UPDATED_NEW'
+                }
+
+                dynamodb.update(requestparams , (err , data)=>{
+                    if(err){
+                        const resp = {
+                            success: false,
+                            error: err,
+                            message: 'Erro interno da plataforma.'
+                        }
+                        res.status(400).json(resp)
+                    }else{
+
+                        const otheruserparams = {
+                            TableName: tablename,
+                            Key: {
+                                'user_id': targetuserId
+                            }
+                        }
+                
+                        dynamodb.get(otheruserparams , (err , data)=>{
+                            if(err){
+                                const resp = {
+                                    success: false,
+                                    error: err,
+                                    message: 'Erro interno da plataforma.'
+                                }
+                                res.status(400).json(resp)
+                            }else{
+                                const targetuser = data.Item
+
+                                const myrequest = {
+                                    targetuser_id: targetuser.user_id,
+                                    targetuser_name: targetuser.name,
+                                    targetuser_bio: targetuser.bio,
+                                    targetuser_models: targetuser.models,
+                                    targetuser_email: targetuser.email,
+                                    targetuser_contacts:targetuser.contacts,
+                                    targetuser_bio:targetuser.bio,
+                                    whodidit:'notme',
+                                    status: 'pending'
+                                }
+        
+                                const myrequestparams = {
+                                    TableName: tablename,
+                                    Key: {
+                                        'user_id': myuser_id
+                                    },
+                                    UpdateExpression: "SET solicitacoes = list_append(if_not_exists(solicitacoes, :emptyList), :newRequest)",
+                                    ExpressionAttributeValues: {
+                                        ':newRequest': [myrequest],
+                                        ':emptyList': [] // garante que a lista exista
+                                    },
+                                    ReturnValues: 'UPDATED_NEW'
+                                }
+
+                                dynamodb.update(myrequestparams , (err , data)=>{
+                                    if(err){
+                                        const resp = {
+                                            success: false,
+                                            error: err,
+                                            message: 'Erro interno da plataforma.'
+                                        }
+                                        res.status(400).json(resp)
+                                    }else{
+                                        const resp = {
+                                            success: true,
+                                            data: data,
+                                            message: 'Solicitação enviada.'
+                                        }
+                                        res.status(200).json(resp)
+                                    }
+                                })
+                            }
+                        })
+
+                        
+                    }
+                })
+            }
+        })
+
+       
+    },
+    cancelContact: async function(req,res){
+        const myuser_id = req.body.myuser_id; // ID do usuário que está fazendo a solicitação
+        const targetuserId = req.body.targetuser_id;
+
+        const myParams = {
+            TableName: tablename,
+            Key:{
+                'user_id': myuser_id
+            }
+        }
+
+        const targetParams = {
+            TableName: tablename,
+            Key:{
+                'user_id':targetuserId  
+            } 
+        }
+        
+        dynamodb.get(myParams, (err,data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error: err,
+                    message: 'Erro interno da plataforma.'
+                }
+        
+                res.status(400).json(resp)
+            }else{
+                const myuser = data.Item
+                dynamodb.get(targetParams, (err , data)=>{
+                    if(err){
+                        const resp = {
+                            success: false,
+                            error: err,
+                            message: 'Erro interno da plataforma.'
+                        }
+
+                        res.status(400).json(resp) 
+                    }else{
+                        const targetuser = data.Item
+                        var j                        
+
+                        for(i=0 ; i< targetuser.solicitacoes.length ; i++ ){
+                            
+                                if(myuser.name == targetuser.solicitacoes[i].targetuser_name){
+        
+                                    const deletetargetparams = {
+                                        TableName: tablename,
+                                        Key: {
+                                            'user_id': targetuserId
+                                        },
+                                        UpdateExpression: `REMOVE solicitacoes[${i}]`,
+                                        ReturnValues: 'UPDATED_NEW'
+                                    }
+        
+                                    dynamodb.update(deletetargetparams , (err , data)=>{
+                                        if(err){
+                                            const resp = {
+                                                success: false,
+                                                error: err,
+                                                message: 'Erro interno da plataforma.'
+                                            }
+
+                                            res.status(400).json(resp)
+                                        }else{
+                                            for(i=0 ; i< myuser.solicitacoes.length ; i++){
+                                                if(myuser.solicitacoes[i].targetuser_name == targetuser.name){
+                                                    const deletemyparams = {
+                                                        TableName: tablename,
+                                                        Key: {
+                                                            'user_id': myuser_id
+                                                        },
+                                                        UpdateExpression: `REMOVE solicitacoes[${i}]`,
+                                                        ReturnValues: 'UPDATED_NEW'
+                                                    }
+        
+                                                    dynamodb.update(deletemyparams , (err,data)=>{
+                                                        if(err){
+                                                            const resp = {
+                                                                success: false,
+                                                                error: err,
+                                                                message: 'Erro interno da plataforma.'
+                                                            }
+                                                
+                                                            res.status(400).json(resp)
+                                                        }else{
+                                                            const resp = {
+                                                                success: true,
+                                                                data: err,
+                                                                message: 'Solicitacao cancelada com sucesso.'
+                                                            }
+                                                
+                                                            res.status(200).json(resp)
+                                                        }
+                                                    })
+                                                }
+                                            }
+                                            
+                                        }
+                                    })
+        
+                                }
+                            
+                        }
+                    }
+                })
+            }
+        })
+            
+          
+        
+    },
+    acceptContact: async function(req, res){
+        const myuser_id = req.body.myuser_id; // ID do usuário que está fazendo a solicitação
+        const targetuserId = req.body.targetuser_id;
+
+        const myuserparams = {
+            TableName: tablename,
+            Key: {
+                'user_id': myuser_id
+            }
+        }
+
+        dynamodb.get(myuserparams , (err , data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error: err,
+                    message: 'Erro interno da plataforma.'
+                }
+                res.status(400).json(resp)
+
+            }else{
+                const myuser = data.Item
+
+                const otheruserparams = {
+                    TableName: tablename,
+                    Key: {
+                        'user_id': targetuserId
+                    }
+                }
+        
+                dynamodb.get(otheruserparams , (err , data)=>{
+                    if(err){
+                        const resp = {
+                            success: false,
+                            error: err,
+                            message: 'Erro interno da plataforma.'
+                        }
+                        res.status(400).json(resp)
+                    }else{
+                        const targetuser = data.Item
+
+                        for(i=0 ; i<targetuser.solicitacoes.length ; i++){
+                            if(targetuser.solicitacoes[i].targetuser_name == myuser.name){
+                                for(j=0 ; j<myuser.solicitacoes.length ; j++){
+                                    if(myuser.solicitacoes[j].targetuser_name == targetuser.name){
+
+                                        const newtargetnetworking = targetuser.solicitacoes[i];
+                                        const newmyusernetworking = myuser.solicitacoes[j];
+
+                                        const removetargetparams = {
+                                            TableName: tablename,
+                                            Key: {
+                                                'user_id': targetuserId
+                                            },
+                                            UpdateExpression: `REMOVE solicitacoes[${i}]`,
+                                            ReturnValues: 'UPDATED_NEW'
+                                        }
+
+                                        const removemyuserparams = {
+                                            TableName: tablename,
+                                            Key: {
+                                                'user_id': myuser_id
+                                            },
+                                            UpdateExpression: `REMOVE solicitacoes[${j}]`,
+                                            ReturnValues: 'UPDATED_NEW'
+                                        }
+
+                                        dynamodb.update(removetargetparams, (err , data)=>{
+                                            if(err){
+                                                const resp = {
+                                                    success: false,
+                                                    error: err,
+                                                    message: 'Erro interno da plataforma.'
+                                                }
+                                                res.status(400).json(resp)
+                                            }else{
+                                                dynamodb.update(removemyuserparams, (err , data)=>{
+                                                    if(err){
+                                                        const resp = {
+                                                            success: false,
+                                                            error: err,
+                                                            message: 'Erro interno da plataforma.'
+                                                        }
+                                                        res.status(400).json(resp)
+                                                    }else{
+                                                        const mynetworkingparams = {
+                                                            TableName: tablename,
+                                                            Key: {
+                                                                'user_id': myuser_id
+                                                            },
+                                                            UpdateExpression: "SET networking = list_append(if_not_exists(networking, :emptyList), :newRequest)",
+                                                            ExpressionAttributeValues: {
+                                                                ':newRequest': [newmyusernetworking],
+                                                                ':emptyList': [] // garante que a lista exista
+                                                            },
+                                                            ReturnValues: 'UPDATED_NEW'
+                                                        }
+
+                                                        dynamodb.update(mynetworkingparams, (err,data)=>{
+                                                            if(err){
+                                                                const resp = {
+                                                                    success: false,
+                                                                    error: err,
+                                                                    message: 'Erro interno da plataforma.'
+                                                                }
+                                                                res.status(400).json(resp)
+                                                            }else{
+                                                                const targetusernetworkingparams = {
+                                                                    TableName: tablename,
+                                                                    Key: {
+                                                                        'user_id': targetuserId
+                                                                    },
+                                                                    UpdateExpression: "SET networking = list_append(if_not_exists(networking, :emptyList), :newRequest)",
+                                                                    ExpressionAttributeValues: {
+                                                                        ':newRequest': [newtargetnetworking],
+                                                                        ':emptyList': [] // garante que a lista exista
+                                                                    },
+                                                                    ReturnValues: 'UPDATED_NEW'
+                                                                }
+
+                                                                dynamodb.update(targetusernetworkingparams, (err , data)=>{
+                                                                    if(err){
+                                                                        const resp = {
+                                                                            success: false,
+                                                                            error: err,
+                                                                            message: 'Erro interno da plataforma.'
+                                                                        }
+                                                                        res.status(400).json(resp)
+                                                                    }else{
+                                                                        const resp = {
+                                                                            success: true,
+                                                                            data: data,
+                                                                            message: 'Novo networking criado.'
+                                                                        }
+                                                                        res.status(200).json(resp)
+                                                                    }
+                                                                })
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                })
+            }
+        })  
+    },
+    removeNetworking: async function(req , res){
+        const myuser_id = req.body.myuser_id; // ID do usuário que está fazendo a solicitação
+        const targetuserId = req.body.targetuser_id;
+
+        const myParams = {
+            TableName: tablename,
+            Key:{
+                'user_id': myuser_id
+            }
+        }
+
+        const targetParams = {
+            TableName: tablename,
+            Key:{
+                'user_id':targetuserId  
+            } 
+        }
+        
+        dynamodb.get(myParams, (err,data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error: err,
+                    message: 'Erro interno da plataforma.'
+                }
+        
+                res.status(400).json(resp)
+            }else{
+                const myuser = data.Item
+                dynamodb.get(targetParams, (err , data)=>{
+
+                    
+                    if(err){
+                        const resp = {
+                            success: false,
+                            error: err,
+                            message: 'Erro interno da plataforma.'
+                        }
+
+                        res.status(400).json(resp) 
+                    }else{
+                        const targetuser = data.Item
+                        var j       
+                    
+                        for(i=0 ; i< targetuser.networking.length ; i++ ){
+                            
+                                if(myuser.name == targetuser.networking[i].targetuser_name){
+        
+                                    const deletetargetparams = {
+                                        TableName: tablename,
+                                        Key: {
+                                            'user_id': targetuserId
+                                        },
+                                        UpdateExpression: `REMOVE networking[${i}]`,
+                                        ReturnValues: 'UPDATED_NEW'
+                                    }
+        
+                                    dynamodb.update(deletetargetparams , (err , data)=>{
+
+                                        
+                                        if(err){
+                                            const resp = {
+                                                success: false,
+                                                error: err,
+                                                message: 'Erro interno da plataforma.'
+                                            }
+
+                                            res.status(400).json(resp)
+                                        }else{
+                                            for(i=0 ; i< myuser.networking.length ; i++){
+                                                if(myuser.networking[i].targetuser_name == targetuser.name){
+                                                    const deletemyparams = {
+                                                        TableName: tablename,
+                                                        Key: {
+                                                            'user_id': myuser_id
+                                                        },
+                                                        UpdateExpression: `REMOVE networking[${i}]`,
+                                                        ReturnValues: 'UPDATED_NEW'
+                                                    }
+        
+                                                    dynamodb.update(deletemyparams , (err,data)=>{
+                                                        if(err){
+                                                            const resp = {
+                                                                success: false,
+                                                                error: err,
+                                                                message: 'Erro interno da plataforma.'
+                                                            }
+                                                
+                                                            res.status(400).json(resp)
+                                                        }else{
+                                                            const resp = {
+                                                                success: true,
+                                                                data: data,
+                                                                message: 'Networking removido com sucesso.'
+                                                            }
+                                                
+                                                            res.status(200).json(resp)
+                                                        }
+                                                    })
+                                                }
+                                            }
+                                            
+                                        }
+                                    })
+        
+                                }
+                            
+                        }
+                    }
+                })
+            }
+        })
+            
+          
+       
+    },
+    updateBio: async function(req , res){
+        const newbio = req.body.newbio;
+        const myuser_id = req.body.myuser_id;
+
+        const params = {
+            TableName: tablename,
+            Key:{
+                'user_id': myuser_id
+            },
+            UpdateExpression: 'set bio = :b',
+            ExpressionAttributeValues:{
+                ':b': newbio
+            },
+            ReturnValues: 'UPDATED_NEW'
+        }
+
+        dynamodb.update(params, (err , data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error: err,
+                    message: 'Erro interno da plataforma.'
+                }
+
+                res.status(400).json(resp)
+            }else{
+                const resp = {
+                    success: true,
+                    data: data,
+                    message: 'Biografia atuaizada com sucesso.'
+                }
+
+                res.status(200).json(resp)
+            }
+        })
+        
+    },
+    updateContacts: async function(req , res){
+        var newinsta = req.body.newinsta;
+        var newlinkedin = req.body.newlinkedin
+        var newwpp = req.body.newwpp
+        const myuser_id = req.body.myuser_id;
+
+        if(newinsta == ''){
+            newinsta = 'NULL'
+        }
+
+        if(newlinkedin == ''){
+            newlinkedin = 'NULL'
+        }
+
+        if(newwpp == ''){
+            newwpp = 'NULL'
+        }
+
+        const contacts = {
+            instagram: newinsta,
+            linkedin: newlinkedin,
+            whatsapp: newwpp
+        }
+
+        const params = {
+            TableName: tablename,
+            Key: {
+                'user_id': myuser_id
+            },
+            UpdateExpression: 'set contacts = :c',
+            ExpressionAttributeValues: {
+                ':c': contacts
+            },
+            ReturnValues: 'UPDATED_NEW'
+        };
+
+        dynamodb.update(params, (err, data)=>{
+            if(err){
+                const resp = {
+                    success: false,
+                    error: err,
+                    message: 'Erro interno da plataforma.'
+                }
+
+                res.status(400).json(resp)
+            }else{
+                const resp = {
+                    success: true,
+                    data: data,
+                    message: 'Contatos atuaizada com sucesso.'
+                }
+
+                res.status(200).json(resp)
+            }
+        })
     }
-    
 }
 
 module.exports = userController;

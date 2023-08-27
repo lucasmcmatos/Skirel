@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const interfaceController = require('../controllers/interfaceController');
+const { route } = require('./userRouter');
 
 // Informações sobre os usuarios ---------------------------------------------------
 
@@ -17,6 +18,10 @@ router.get('/verify', interfaceController.verifyToken, (req,res)=>{
 });
 
 router.get('/data/:userEmail', interfaceController.userData);
+
+router.get('/getSignedUrl', interfaceController.getSignedUrl);
+
+router.get('/deleteModel', interfaceController.deleteModel);
 
 // Renderização de Paginas EJS ------------------------------------------------------
 

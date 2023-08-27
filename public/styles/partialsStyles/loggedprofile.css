@@ -1,4 +1,6 @@
-
+strong{
+    color: #7c8046;
+}
 #bodyContainer{
     /* background-color: red; */
     width: 100%;
@@ -256,13 +258,14 @@
 .contactsLinks{
     border: 1px solid #E6EAEE;
     border-radius: 4px;
-    width: 200px;
-    height: calc(100% - 60px);
+    padding: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     transition: .1s ease-in;
     cursor: pointer;
+    font-family: 'Open sans';
+    text-decoration: none;
 }
 
 .contactsLinks:hover{
@@ -351,4 +354,112 @@
     flex-direction: row;
     align-items: center;
     text-decoration: none;
+}
+
+#bioupdateform{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#newbio{
+    width: calc(100%);
+    height: 70%;
+    margin: 9px;
+    border: 1px solid #E6EAEE;
+    background-color: #F5F6E9;
+    border-radius: 4px;
+}
+
+#newbioinput{
+    background-color: #fff;
+    color: #7c8046;
+    border: 1px solid #7c8046;
+    padding:10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 4px;
+    font-family: 'Open sans';
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+#newbioinput:hover{
+    background-color: #7c8046;
+    color: #fff;
+    border: 1px solid #7c8046;
+    
+}
+
+#contactsupdateform{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.inputarea{
+    padding: 10px;
+    width: 250px;
+    border-radius: 4px;
+    border: 1px solid #E6EAEE;
+    background-color: #F5F6E9;
+}
+
+#inputsubmit{
+    padding: 10px;
+    border: 1px solid #7c8046;
+    background-color: #fff;
+    color: #7c8046;
+    border-radius: 4px;
+    transition:  .1s ease-in;
+    cursor: pointer;
+}
+
+#inputsubmit:hover{
+    background-color: #7c8046;
+    color: #fff;
+}
+
+.nonetworkingUser{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F5F6E9;
+    padding-left: 20px;
+}
+
+.nonetworkingText{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.nonetworkingButton{
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 33px;
+    font-size: 15px;
+    border-radius: 4px;
+    background-color: #7c8046;
+    border: 1px solid #7c8046;
+    color: #fff;
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
+.nonetworkingButton:hover{
+    background-color: #F5F6E9;
+    color: #7c8046;
 }

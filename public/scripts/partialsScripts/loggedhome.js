@@ -1,7 +1,6 @@
 const user = JSON.parse(localStorage.getItem('usuario'))
 var i;
 
-console.log(user.networking)
 
 if(user.networking == undefined || user.networking.length == 0){
     document.getElementById('networkingBody').innerHTML = `<div class='networkingPopupContainer'><h1 class='networkingPopupTitle'>Faça novos networkings</h1><p class='networkingPopupText'>Escolha entre usuários cadastrados, troque modelos e continue expandindo as pesquisas</p><a class='networkingPopupLink' href='http://localhost:3000/Welcome?View=Comunidade'>Procurar usuários</a></div>`
@@ -9,9 +8,9 @@ if(user.networking == undefined || user.networking.length == 0){
     document.getElementById('networkingBody').innerHTML = '<ul id="usersList"></ul>';
     for(i=0 ; i < user.networking.length ; i++){
         if(i!=0){
-            var networking = networking + `<li class="userContainer"><a class= 'myModelItenLink' href='http://localhost:3000/Welcome?View=Comunidade'><div class="profileImgContainer">${user.networking[i].name[0]}</div><div class="userDataContainer"><h3 class="userDataName">${user.networking[i].name}</h3><h1 class="userDataModels">${user.networking[i].models.length} Modelos</h1></div><div class="deleteContainer"><a href="#"></a></div></a></li>`
+            var networking = networking + `<li class="userContainer"><a class= 'myModelItenLink' href='http://localhost:3000/Welcome?View=Comunidade'><div class="profileImgContainer">${user.networking[i].targetuser_name[0]}</div><div class="userDataContainer"><h3 class="userDataName">${user.networking[i].targetuser_name}</h3><h1 class="userDataModels">${user.networking[i].targetuser_models.length} Modelos</h1></div><div class="deleteContainer"><a href="#"></a></div></a></li>`
         }else{
-            var networking = `<li class="userContainer"><a class= 'myModelItenLink' href='http://localhost:3000/Welcome?View=Comunidade'><div class="profileImgContainer">${user.networking[i].name[0]}</div><div class="userDataContainer"><h3 class="userDataName">${user.networking[i].name}</h3><h1 class="userDataModels">${user.networking[i].models.length} Modelos</h1></div><div class="deleteContainer"><a href="#"></a></div></a></li>`
+            var networking = `<li class="userContainer"><a class= 'myModelItenLink' href='http://localhost:3000/Welcome?View=Comunidade'><div class="profileImgContainer">${user.networking[i].targetuser_name[0]}</div><div class="userDataContainer"><h3 class="userDataName">${user.networking[i].targetuser_name}</h3><h1 class="userDataModels">${user.networking[i].targetuser_models.length} Modelos</h1></div><div class="deleteContainer"><a href="#"></a></div></a></li>`
         }
     }
 

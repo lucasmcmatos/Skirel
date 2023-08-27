@@ -1,0 +1,127 @@
+<link rel="stylesheet" type="text/css" href="styles/partialsStyles/loggedworkspace.css"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div id="bodyContainer">
+    <div id="containerBoxNew">
+        <div id="titleContainer">
+            <h3 id="subtile">OVERVIEW</h3>
+            <h1 class="titleHome">Workspace</h1>
+        </div>
+
+        <div id="content">
+            <div id="containercontentinfos">
+                <h1 class="titleHome">Atente-se para as informações de uso da ferramenta</h1>
+                <div id="limitationscontainer" onclick="showinformations()">
+                    <h2 class="titleHome2">Limitações da plataforma</h2>
+                    <ul class="subtitlecontent">
+                        <li class="subtitle2"><strong>Frameworks</strong><br>Atualmente a ferramenta de predição do Skirel é compatível com dois frameworks Python de Machine Larning: TensorFlow e Scikit-Learn.</li>
+                        <li class="subtitle2"><strong>Arquivos</strong><br>Atualmente a ferramente de predição do Skirel é compatível com dois tipos de arquivos para modelos de predição serializados e dois tipos de arquivos para os dados que serão previstos:
+                            <ul class="subtitlecontent">
+                                <li class="subtitle2"><strong>Modelos (".pkl", ".h5"): </strong>A interface Skirel é compátivel, atualmente, apenas com os arquivos do tipo Pickle e H5, ambos formas de serialização de dados comumente usados para serialização dos modelos de predição. </li>
+                                <li class="subtitle2"><strong>Dados de Predição (".xlsx", ".csv"): </strong>A interface Skirel é compátivel, atualmente, apenas com os arquivos do tipo Excel e CSV, ambos são tipos de arquivos que armazenam planilhas como dados. </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="howtousecontainer" onclick="showinformations()">
+                    <h2 class="titleHome2">Como usar a ferramenta</h2>
+                    <ul class="subtitlecontent">
+                        <li class="subtitle2"><strong>Arquivos de Entrada</strong><br>Selecione um modelo de predição serializado em ".pkl" ou ".h5" usando o botão de "Upload do Modelo", em seguida selecione um arquivo ".xlsx" ou ".csv", contendo a planilha de dados que serão revistos em que a primeira linha do arquivo contenhas as etiquetas (labels), sendo cada coluna, uma label diferente e cada linha subsequente um dado à ser previsto.</li>
+                        <li class="subtitle2"><strong>Arquivos de Saida</strong><br>Recebendo uma resposta positiva do servidor, o botão "Download do resultado", ficará ativo, clickando nele poderá realizar o download do arquivo com os resultados da predição solicitada.</li>
+                        <li class="subtitle2"><strong>Modelos da Plataforma</strong><br>A interface Skirel, disponibiliza modelos de predição para uso da "Ferramenta de Predição". Em apenas um click você pode fazer o download do Arquivo do Modelo e em outro click poderá fazer o download do Arquivo do Dataset para uso com o Modelo. Use os modelos e dataset da plataforma como base para desenvolver seus próprios a fim de rodar na plataforma.  </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="containerrunner">
+                <div class="containerModels">
+                    <h1 class="titleHome2">Ferramenta de Predição</h1>
+                    <div id="bodyContainerModels" class="bodyContainerModels">
+                        <form id="uploadData">
+                            <div class="uploadContainer">
+                                <button class="btnWarning">
+                                    <img class="btnWarningImg" src="images/uploadImage.svg" width="20px">   Selecione um modelo
+                                    <input type="file" class="modelFileContainer" id="file" name="file" accept=".pkl, .h5" required>
+                                </button>
+                            </div>
+                            
+                            <div class="uploadContainer">
+                                <button  class="btnWarning">
+                                    <img class="btnWarningImg" src="images/uploadImage.svg" width="20px">   Selecione um arquivo de dados
+                                    <input type="file" class="modelFileContainer" id="data" name="data"accept=".xlsx, .csv" required>
+                                </button>
+                            </div>
+                            
+                            <input class="modelSubmit" id="predictionsend" type="submit" value="Enviar arquivos">
+                        </form>
+                    </div>
+                </div>
+                <div class="containerModels">
+                    
+                    <h1 class="titleHome2">Modelos da Plataforma</h1>
+                    <div class="bodyContainerModels">
+                        <div class="listheader">
+                            <h1 class="titleModels">Modelos de Predição</h1>
+                            <h1 class="titleModels">Dados de Teste</h1></div>
+                        <div class="listContainer">
+                            <ul id="modelsDataList">
+                                <li class="containerItem" id="0"> 
+                                    <div class="contentLinks">
+                                        <a href="https://skirel.s3.us-east-2.amazonaws.com/modelos_da_plataforma/Modelos/NeuralNetworks_baseline.h5" class="modellink">
+                                            <div class="containermodel">
+                                                Cintilação Ionosférica (Redes Neurais - TensorFlow) 
+                                            </div>
+                                            
+                                        </a>
+                                        <a href="https://skirel.s3.us-east-2.amazonaws.com/modelos_da_plataforma/Datasets/Baseline_Modelos.xlsx" class="datasetlink">
+                                            <div class="containerdataset">
+                                                Database
+                                            </div>    
+                                        </a>
+                                    </div>
+                                    <div class="popup">Modelo de predição de acontecimentos de Cintilação Ionosférica com 30 minutos de antecedência. Criado com algoritmo de Redes Neurais (do Framework TensorFlow).</div>
+                                </li>
+                                <li class="containerItem" id="1">
+                                    <div class="contentLinks">
+                                        <a href="https://skirel.s3.us-east-2.amazonaws.com/modelos_da_plataforma/Modelos/RandomForest_baseline.pkl" class="modellink">
+                                            <div class="containermodel">
+                                                Cintilação Ionosférica (Randon Forest - Scikit-Learn)
+                                            </div>
+                                        </a>
+                                        <a href="https://skirel.s3.us-east-2.amazonaws.com/modelos_da_plataforma/Datasets/Baseline_Modelos.xlsx"   class="datasetlink">
+                                            <div class="containerdataset">
+                                                Database
+                                            </div>    
+                                        </a>
+                                    </div> 
+                                    <div class="popup">Modelo de predição de acontecimentos de Cintilação Ionosférica com 30 minutos de antecedência. Criado com o motor Random Forest (do Framework Scikit-Learn).</div>
+                                </li>
+                                
+                                <li class="containerItem" id="2"> 
+                                    <div class="contentLinks">
+                                        <a href="https://skirel.s3.us-east-2.amazonaws.com/modelos_da_plataforma/Modelos/XGBoost_baseline.pkl" class="modellink">
+                                            <div class="containermodel">
+                                                Cintilação Ionosférica (XGBoost - Scikit-Learn)
+                                            </div>
+                                        </a>
+                                        <a href="https://skirel.s3.us-east-2.amazonaws.com/modelos_da_plataforma/Datasets/Baseline_Modelos.xlsx" class="datasetlink">
+                                            <div class="containerdataset">
+                                                Database
+                                            </div>    
+                                        </a>
+                                    </div>
+                                    <div class="popup">Modelo de predição de acontecimentos de Cintilação Ionosférica com 30 minutos de antecedência.  Criado com o motor XGBoost (do Framework Scikit-Learn).</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="scripts/partialsScripts/loggedworkspace.js"></script>
+

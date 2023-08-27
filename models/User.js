@@ -14,7 +14,10 @@ const userSchema = {
         header:'String',
         body:'String',
         createdAt:'Date'
-    }]
+    }],
+    models:[],
+    networking:[],
+    solicitacoes:[]
 }
 
 

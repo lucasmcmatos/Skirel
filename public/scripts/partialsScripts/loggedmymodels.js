@@ -39,8 +39,11 @@ for(i=0 ; i < user.models.length ; i++){
     }
 }
 
-document.getElementById('myModelsList').innerHTML = models
-
+if(models == undefined){
+    document.getElementById('myModelsList').innerHTML = ''
+}else{
+    document.getElementById('myModelsList').innerHTML = models
+}
 
 var lista = document.getElementById('myModelsList');
 
@@ -70,7 +73,7 @@ lista.addEventListener("click", function(e){
                 </div>
             </div>
             <div id="accessContainer">
-                <h1 id="accessTitle">Acessos ao modelo</h1>
+                <h1 id="accessTitle">Downloads do modelo</h1>
                 <div class="modelDescriptionAccessFram">
                     <p class="accessNumber">${user.models[model_id].acessos}</p>
                 </div>
@@ -78,18 +81,17 @@ lista.addEventListener("click", function(e){
             <div class="fileInputContainer">
                 <h1 class="containerTitle"> Arquivo do modelo</h1> 
                 <div class="uploadContainer" id="downloadBtnContainer">
-                    <button class="btnWarning" id="downloadBtn">
-                        <img class="btnWarningImg" src="images/uploadImage.svg" width="20px">Download do arquivo
+                    <button class="btnWarning" id="downloadBtn" onclick='downloadModel(${model_id})'>
+                        <img class="btnWarningImg" src="images/downloadImage.svg" width="20px">Download do arquivo
                     </button>
                 </div>
             </div>
             <div class="importOptionsConttainerView">
-                <button class="importOptionView" id='deleteButton' onclick='deleteModel()'>Delete</button>
-                <button class="importOptionView">Usar</button>
+                <button class="importOptionView" id='deletebutton' onclick="deleteModel(${model_id})">Deletar</button>
             </div>
         </div>
     </div>`
-})
+})   
 
 function showImportModelView(){
     document.getElementById("viewContainer").style.display = "flex"
@@ -106,7 +108,7 @@ function showImportModelView(){
                 <div class="uploadContainer">
                     <button class="btnWarning">
                         <img class="btnWarningImg" src="images/uploadImage.svg" width="20px">   Selecione um Arquivo
-                        <input type="file" id='modelFileContainer' name='modelfile' required>
+                        <input type="file" id='modelFileContainer' name='modelfile' accept='.pkl , .h5' required>
                     </button>
                 </div>
             </div>
@@ -127,12 +129,9 @@ function showImportModelView(){
                     <option value="0">Selecione um Framework</option>
                     <option value="Tensorflow">TensorFlow</option>
                     <option value="Scikit-learn">Scikit-Learn</option>
-                    <option value="Theano">Theano</option>
-                    <option value="Pytorch">Pytorch</option>
                 </select>
             </div>
-            
-
+        
             <div class="importOptionsConttainer">
                 <button class="importOption" type='submit'>Criar modelo</button>
             </div>
@@ -153,9 +152,14 @@ document.getElementById('formNewModel').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         alert(data.message)
+        localStorage.removeItem('paginaRecarregada')
+        if(data.success){
+            window.location.reload();
+        }
     })
     .catch(error => {
         alert('Erro no upload:', error);
+        console.log(error)
     });
 });
 }
@@ -164,8 +168,41 @@ function closeImportModelView(){
     document.getElementById("viewContainer").style.display = "none";
 }
 
+function downloadModel(model_id){
+    let model_name = user.models[model_id].name
+    let s3 = `${user.user_id}/${model_name}`
 
+    fetch(`/getSignedUrl?s3=${s3}&model_id=${model_id}`)
+    .then(response => response.json())
+    .then(data => {
+        const signedUrl = data.signedUrl;
+        window.location.href = signedUrl; // Isso iniciará o download
+    })
+    .catch(error => {
+        console.error("Erro ao obter URL pré-assinada:", error);
+    });
+}
 
+function deleteModel(model_id){
+    let model_name = user.models[model_id].name
+    let s3 = `${user.user_id}/${model_name}`
+
+    fetch(`/deleteModel?s3=${s3}&model_id=${model_id}`)
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message)
+        localStorage.removeItem('paginaRecarregada')
+        if(data.success){
+            window.location.reload();
+        }else{
+            console.log(data.error)
+        }
+    })
+    .catch(error => {
+        console.error("Erro ao obter URL pré-assinada:", error);
+    });
+
+}
 
 
 

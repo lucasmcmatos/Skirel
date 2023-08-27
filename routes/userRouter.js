@@ -17,6 +17,18 @@ router.post('/recoverAccess',userController.newPassword);
 
 router.post('/changePassword', userController.changePassword);
 
-router.post('/uploadfile',upload.single('modelfile') , userController.uploadfile )
+router.post('/requestContact', userController.requestContact);
+
+router.post('/uploadfile', upload.single('modelfile'), userController.uploadfile);
+
+router.post('/cancelContact', userController.cancelContact);
+
+router.post('/acceptContact', userController.acceptContact);
+
+router.post('/removeNetworking', userController.removeNetworking);
+
+router.post('/updateBio', userController.updateBio);
+
+router.post('/updateContacts', userController.updateContacts);
 
 module.exports = router;
