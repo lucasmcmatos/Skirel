@@ -14,27 +14,27 @@
 
 </head>
 <body>
-    <div id="imgContainer">
-        <img id="img" src="images\logo_cores_icones\Logo fundo claro.png" width="600px">
-    </div>
-
-    <div id="containerContainer">
-        <div id="container">
-            <div id="containerHeader">
-                <h1 id="containerTitle"> Logue na sua conta</h1>
-            </div>
-            <div id="containerBody">
-                <form id="loginForm">
-                    <input class="inputField" type="email" id="email" placeholder="Email" required>
-                    <input class="inputField" type="password" id="password" placeholder="Senha" required>
-                    <button  id="imputSubmit" type="submit">Logar <img id="imgLogin" src="images/LoginIcon.svg" width="23px"></button>
-                </form>
     
-                <p class="question">Esqueceu a senha? <a href="http://localhost:3000/Recuperar_Senha">Recuperar Senha</a></p>
-                <p class="question">Ainda não tem uma conta? <a href="http://localhost:3000/Cadastro">Cadastrar</a></p>
-                <a href="http://localhost:3000/" id="linkHome">Voltar para início</a>
-            </div>
+    <div id="containerContainer">
+        
+        <a href="http://localhost:3000/"><img id="img" src="images\logo_cores_icones\LogoSemFundo.png" width="100px"></a>
+
+        <div id="containerHeader">
+                <h1 id="containerTitle">Entre na sua conta Skirel</h1>
         </div>
+
+        <div id="container">
+            <form id="loginForm">
+                <input class="inputField" type="email" id="email" placeholder="Email" required>
+                <input class="inputField" type="password" id="password" placeholder="Senha" required>
+                <button  id="imputSubmit" type="submit">Logar <img id="imgLogin" src="images/LoginIcon.svg" width="23px"></button>
+            </form>
+        </div>
+
+        <p class="question">Esqueceu a senha? <a href="http://localhost:3000/Recuperar_Senha">Recuperar Senha</a></p>
+        <p class="question"> Novo no Skirel ? <a href="http://localhost:3000/Cadastro">Criar uma conta</a></p>
+        
+        
     </div>
 
     <script src="scripts/loginpage.js"></script>
