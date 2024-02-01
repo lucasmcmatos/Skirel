@@ -15,6 +15,7 @@ body{
 #img{
   margin: 0;
   padding: 0;
+  transform: translateY(-10px);
 }
 
 #containerContainer{

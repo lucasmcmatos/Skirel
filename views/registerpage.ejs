@@ -14,29 +14,28 @@
 </head>
 <body>
 
-    <div id="imgContainer">
-        <img id="img" src="images\logo_cores_icones\Logo fundo claro.png" width="600px">
+    <div id="containerContainer">
+        
+        <a href="http://localhost:3000/"><img id="img" src="images\logo_cores_icones\LogoSemFundo.png" width="90px"></a>
+
+        <div id="containerHeader">
+                <h1 id="containerTitle">Crie uma conta Skirel</h1>
+        </div>
+
+        <div id="container">
+            <form id="registerForm">
+                <input class="inputField" type="email" id="email" placeholder="Email" required>
+                <input class="inputField" type="text" id="name" placeholder="Nome Completo" required>
+                <input class="inputField" type="password" id="password" placeholder="Senha" required>
+                <input class="inputField" type="password" id="confirmPassword" placeholder="Confirme a Senha" required>
+                <button  id="imputSubmit" type="submit">Cadastrar</button>
+            </form>
+        </div>
+
+        <p class="question">Ja possui uma conta? <a href="http://localhost:3000/Login">Logar</a></p>
+
     </div>
 
-    <div id="containerContainer">
-        <div id="container">
-            <div id="containerHeader">
-                <h1 id="containerTitle"> Crie uma conta Skirel</h1>
-            </div>
-            <div id="containerBody">
-                <form id="registerForm">
-                    <input class="inputField" type="email" id="email" placeholder="Email" required>
-                    <input class="inputField" type="text" id="name" placeholder="Nome Completo" required>
-                    <input class="inputField" type="password" id="password" placeholder="Senha" required>
-                    <input class="inputField" type="password" id="confirmPassword" placeholder="Confirme a Senha" required>
-                    <button  id="imputSubmit" type="submit">Cadastrar</button>
-                </form>
-    
-                <p class="question">Ja possui uma conta? <a href="http://localhost:3000/Login">Logar</a></p>
-                <a href="http://localhost:3000/" id="linkHome">Voltar para início</a>
-            </div>
-        </div>
-    </div>
     <script src="scripts/registerpage.js"></script>
 </body>
 </html>
